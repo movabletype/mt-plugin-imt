@@ -13,14 +13,14 @@
 <div id="header">
     <h1><MT_TRANS phrase="Edit Comment"></h1>
     <div class="home"><a href="<TMPL_VAR NAME=SCRIPT_BASE_URL>"><img src="<TMPL_VAR NAME=STATIC_URI>images/iphone/buttons/global/home.png" alt="<MT_TRANS phrase="Home">" width="30" height="26" /></a></div>
-    <div class="site"><a href="<TMPL_VAR NAME=BLOG_SITE_URL>" target="_blank"><img src="<TMPL_VAR NAME=STATIC_URI>images/iphone/buttons/global/site.png" alt="<MT_TRANS phrase="View site">" width="30" height="26" /></a></div>
+    <div class="site"><a href="<TMPL_VAR NAME=BLOG_SITE_URL>" target="_blank"><img src="<TMPL_VAR NAME=STATIC_URI>images/iphone/buttons/global/site.png" alt="<MT_TRANS phrase="View Site">" width="30" height="26" /></a></div>
 </div>
 <div id="content">
     <div class="tabs">
         <ul>
-            <li><a href="<TMPL_VAR NAME=SCRIPT_URL>?blog_id=<TMPL_VAR NAME=BLOG_ID>"><MT_TRANS phrase="New Post"></a></li>
+            <li><a href="<TMPL_VAR NAME=SCRIPT_URL>?__mode=edit_entry&amp;blog_id=<TMPL_VAR NAME=BLOG_ID>"><MT_TRANS phrase="New Entry"></a></li>
             <li class="yah"><a href="<TMPL_VAR NAME=SCRIPT_URL>?__mode=list_comments&amp;blog_id=<TMPL_VAR NAME=BLOG_ID>"><MT_TRANS phrase="Comments"></a></li>
-            <li><a href="<TMPL_VAR NAME=SCRIPT_URL>?__mode=list_entries&amp;blog_id=<TMPL_VAR NAME=BLOG_ID>"><MT_TRANS phrase="Posts"></a></li>
+            <li><a href="<TMPL_VAR NAME=SCRIPT_URL>?__mode=list_entries&amp;blog_id=<TMPL_VAR NAME=BLOG_ID>"><MT_TRANS phrase="Entries"></a></li>
         </ul>
     </div>
     <TMPL_IF NAME=SAVED>
@@ -34,7 +34,7 @@
         <div class="text-field meta-field field">
             <div class="field-name">
                 <div class="field-name-inner">
-                    <MT_TRANS phrase="Comment:">
+                    <MT_TRANS phrase="Comment">:
                 </div>
             </div>
             <div class="field-value">
@@ -47,7 +47,7 @@
             <div class="created_on-field meta-field field">
                 <div class="field-name">
                     <div class="field-name-inner">
-                        <MT_TRANS phrase="Posted:">
+                        <MT_TRANS phrase="Created">:
                     </div>
                 </div>
                 <div class="field-value">
@@ -61,7 +61,7 @@
             <div class="author-field meta-field field">
                 <div class="field-name">
                     <div class="field-name-inner">
-                        <MT_TRANS phrase="Author:">
+                        <MT_TRANS phrase="Author">:
                     </div>
                 </div>
                 <div class="field-value">
@@ -75,7 +75,7 @@
             <div class="email-field meta-field field">
                 <div class="field-name">
                     <div class="field-name-inner">
-                        <MT_TRANS phrase="Email:">
+                        <MT_TRANS phrase="Email">:
                     </div>
                 </div>
                 <div class="field-value">
@@ -89,7 +89,7 @@
             <div class="url-field meta-field field">
                 <div class="field-name">
                     <div class="field-name-inner">
-                        <MT_TRANS phrase="URL:">
+                        <MT_TRANS phrase="URL">:
                     </div>
                 </div>
                 <div class="field-value">
@@ -134,7 +134,7 @@
                 <a href="#" onclick="return unpublishComment()" class="button"><MT_TRANS phrase="Unpublish"></a>
             </TMPL_UNLESS>
             <a href="#" onclick="return deleteComment( 'delete', '<MT_TRANS phrase="Are you sure you want to permanently delete this comment?" escape="js">' )" class="delete-button button"><MT_TRANS phrase="Delete"></a>
-            <a href="#" onclick="return deleteComment( 'junk', '<MT_TRANS phrase="Are you sure you want to report this as spam?" escape="js">' )" class="delete-button button"><MT_TRANS phrase="Report Spam"></a>
+            <a href="#" onclick="return deleteComment( 'junk', '<MT_TRANS phrase="Are you sure you want to report this as spam?" escape="js">' )" class="delete-button button"><MT_TRANS phrase="Junk"></a>
         </div>
     </div>
 </div>

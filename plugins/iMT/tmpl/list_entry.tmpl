@@ -3,14 +3,14 @@
 <div id="header">
     <h1><TMPL_VAR NAME=BLOG_NAME ESCAPE=HTML></h1>
     <div class="home"><a href="<TMPL_VAR NAME=SCRIPT_BASE_URL>"><img src="<TMPL_VAR NAME=STATIC_URI>images/iphone/buttons/global/home.png" alt="<MT_TRANS phrase="Home">" width="30" height="26" /></a></div>
-    <div class="site"><a href="<TMPL_VAR NAME=BLOG_URL>" target="_blank"><img src="<TMPL_VAR NAME=STATIC_URI>images/iphone/buttons/global/site.png" alt="<MT_TRANS phrase="View site">" width="30" height="26" /></a></div>
+    <div class="site"><a href="<TMPL_VAR NAME=BLOG_URL>" target="_blank"><img src="<TMPL_VAR NAME=STATIC_URI>images/iphone/buttons/global/site.png" alt="<MT_TRANS phrase="View Site">" width="30" height="26" /></a></div>
 </div>
 <div id="content">
     <div class="tabs">
         <ul>
-            <li><a href="<TMPL_VAR NAME=SCRIPT_URL>?__mode=edit_entry&amp;blog_id=<TMPL_VAR NAME=BLOG_ID>"><MT_TRANS phrase="New Post"></a></li>
+            <li><a href="<TMPL_VAR NAME=SCRIPT_URL>?__mode=edit_entry&amp;blog_id=<TMPL_VAR NAME=BLOG_ID>"><MT_TRANS phrase="New Entry"></a></li>
             <li><a href="<TMPL_VAR NAME=SCRIPT_URL>?__mode=list_comments&amp;blog_id=<TMPL_VAR NAME=BLOG_ID>"><MT_TRANS phrase="Comments"></a></li>
-            <li class="yah"><a href="<TMPL_VAR NAME=SCRIPT_URL>?__mode=list_entries&amp;blog_id=<TMPL_VAR NAME=BLOG_ID>"><MT_TRANS phrase="Posts"></a></li>
+            <li class="yah"><a href="<TMPL_VAR NAME=SCRIPT_URL>?__mode=list_entries&amp;blog_id=<TMPL_VAR NAME=BLOG_ID>"><MT_TRANS phrase="Entries"></a></li>
         </ul>
     </div>
     <TMPL_IF NAME=SAVED>
@@ -27,21 +27,31 @@
             </div>
         </div>
     </TMPL_IF>
-    <ul class="list">
-        <TMPL_LOOP NAME=OBJECT_LOOP>
-            <li class="<TMPL_IF NAME=PAGE_MODE_IS_LIST_ENTRIES><TMPL_IF NAME=IS_STICKY>item-featured<TMPL_ELSE><TMPL_IF NAME=STATUS_PUBLISH>item-published</TMPL_IF><TMPL_IF NAME=STATUS_DRAFT>item-draft</TMPL_IF><TMPL_IF NAME=STATUS_FUTURE>item-future</TMPL_IF></TMPL_IF><TMPL_ELSE><TMPL_IF NAME=STATUS_PUBLISH>item-published</TMPL_IF><TMPL_IF NAME=STATUS_DRAFT>item-draft</TMPL_IF></TMPL_IF> list-item">
-                <TMPL_IF NAME=HAS_EDIT_ACCESS>
-                    <a href="<TMPL_VAR NAME=SCRIPT_URL>?__mode=edit_entry&amp;id=<TMPL_VAR NAME=ID>&amp;blog_id=<TMPL_VAR NAME=BLOG_ID>">
-                </TMPL_IF>
-                <span class="list-item-inner">
-                    <span class="list-item-label"><TMPL_VAR NAME=TITLE ESCAPE=HTML></span>
-                </span>
-                <TMPL_IF NAME=HAS_EDIT_ACCESS>
-                    </a>
-                </TMPL_IF>
-            </li>
-        </TMPL_LOOP>
-    </ul>
+    <TMPL_IF NAME=OBJECT_LOOP>
+        <ul class="list">
+            <TMPL_LOOP NAME=OBJECT_LOOP>
+                <li class="<TMPL_IF NAME=STATUS_PUBLISH>item-published</TMPL_IF><TMPL_IF NAME=STATUS_DRAFT>item-draft</TMPL_IF><TMPL_IF NAME=STATUS_FUTURE>item-future</TMPL_IF> list-item">
+                    <TMPL_IF NAME=HAS_EDIT_ACCESS>
+                        <a href="<TMPL_VAR NAME=SCRIPT_URL>?__mode=edit_entry&amp;id=<TMPL_VAR NAME=ID>&amp;blog_id=<TMPL_VAR NAME=BLOG_ID>">
+                    </TMPL_IF>
+                    <span class="li-inset">
+                        <span class="li-status">
+                            <span class="li-label"><TMPL_VAR NAME=TITLE ESCAPE=HTML></span>
+                        </span>
+                    </span>
+                    <TMPL_IF NAME=HAS_EDIT_ACCESS>
+                        </a>
+                    </TMPL_IF>
+                </li>
+            </TMPL_LOOP>
+        </ul>
+    <TMPL_ELSE>
+        <div class="zerostate-message message">
+            <div class="message-content">
+                <p><MT_TRANS phrase="There are no entries on this blog."></p>
+            </div>
+        </div>
+    </TMPL_IF>
     <TMPL_IF NAME=OBJECT_LOOP>
         <div class="button-bar">
             <div class="two-up">

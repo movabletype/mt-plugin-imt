@@ -3,35 +3,48 @@
 <div id="header">
     <h1><MT_TRANS phrase="Post Saved"></h1>
     <div class="home"><a href="<TMPL_VAR NAME=SCRIPT_BASE_URL>"><img src="<TMPL_VAR NAME=STATIC_URI>images/iphone/buttons/global/home.png" alt="<MT_TRANS phrase="Home">" width="30" height="26" /></a></div>
-    <div class="site"><a href="<TMPL_VAR NAME=BLOG_SITE_URL>" target="_blank"><img src="<TMPL_VAR NAME=STATIC_URI>images/iphone/buttons/global/site.png" alt="<MT_TRANS phrase="View site">" width="30" height="26" /></a></div>
+    <div class="site"><a href="<TMPL_VAR NAME=BLOG_SITE_URL>" target="_blank"><img src="<TMPL_VAR NAME=STATIC_URI>images/iphone/buttons/global/site.png" alt="<MT_TRANS phrase="View Site">" width="30" height="26" /></a></div>
 </div>
 <div id="content">
+    <div class="success-message message">
+        <div class="message-content">
+            <p><MT_TRANS phrase="Your entry has been saved."></p>
+        </div>
+    </div>
     <ul class="list">
         <li class="list-item">
             <a href="<TMPL_VAR NAME=BLOG_SITE_URL>" target="_blank">
-                <span class="list-item-inner">
-                    <span class="list-item-label"><MT_TRANS phrase="View published weblog"></span>
+                <span class="li-inset">
+                    <span class="li-status">
+                        <span class="li-label"><MT_TRANS phrase="View published blog"></span>
+                    </span>
                 </span>
             </a>
         </li>
         <li class="list-item">
             <a href="<TMPL_VAR NAME=SCRIPT_URL>?__mode=edit_entry&amp;id=<TMPL_VAR NAME=ENTRY_ID>&amp;blog_id=<TMPL_VAR NAME=BLOG_ID>">
-                <span class="list-item-inner">
-                    <span class="list-item-label"><MT_TRANS phrase="Edit post"></span>
+                <span class="li-inset">
+                    <span class="li-status">
+                        <span class="li-label"><MT_TRANS phrase="Re-edit this entry"></span>
+                    </span>
+                </span>
+            </a>
+        </li>
+        <li class="list-item">
+            <a href="<TMPL_VAR NAME=SCRIPT_URL>?__mode=edit_entry&amp;blog_id=<TMPL_VAR NAME=BLOG_ID>">
+                <span class="li-inset">
+                    <span class="li-status">
+                        <span class="li-label"><MT_TRANS phrase="Create another entry"></span>
+                    </span>
                 </span>
             </a>
         </li>
         <li class="list-item">
             <a href="<TMPL_VAR NAME=SCRIPT_URL>?__mode=list_entries&amp;blog_id=<TMPL_VAR NAME=BLOG_ID>">
-                <span class="list-item-inner">
-                    <span class="list-item-label"><MT_TRANS phrase="List posts"></span>
-                </span>
-            </a>
-        </li>
-        <li class="list-item">
-            <a href="<TMPL_VAR NAME=SCRIPT_URL>?blog_id=<TMPL_VAR NAME=BLOG_ID>">
-                <span class="list-item-inner">
-                    <span class="list-item-label"><MT_TRANS phrase="Create another post"></span>
+                <span class="li-inset">
+                    <span class="li-status">
+                        <span class="li-label"><MT_TRANS phrase="List entries"></span>
+                    </span>
                 </span>
             </a>
         </li>

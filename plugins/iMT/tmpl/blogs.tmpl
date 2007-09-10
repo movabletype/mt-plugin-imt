@@ -1,29 +1,29 @@
 <TMPL_INCLUDE NAME="header.tmpl">
 
 <div id="header">
-    <h1><MT_TRANS phrase="Weblogs"></h1>
+    <h1><MT_TRANS phrase="Blogs"></h1>
     <div class="home"><a href="<TMPL_VAR NAME=SCRIPT_BASE_URL>"><img src="<TMPL_VAR NAME=STATIC_URI>images/iphone/buttons/global/home.png" alt="<MT_TRANS phrase="Home">" width="30" height="26" /></a></div>
-    <div class="site"><a href="<TMPL_VAR NAME=USER_SITE_URL>" target="_blank"><img src="<TMPL_VAR NAME=STATIC_URI>images/iphone/buttons/global/site.png" alt="<MT_TRANS phrase="View site">" width="30" height="26" /></a></div>
+    <div class="site"><a href="<TMPL_VAR NAME=USER_SITE_URL>" target="_blank"><img src="<TMPL_VAR NAME=STATIC_URI>images/iphone/buttons/global/site.png" alt="<MT_TRANS phrase="View Site">" width="30" height="26" /></a></div>
 </div>
 <div id="content">
     <TMPL_IF NAME=DELETED>
         <div class="success-message message">
             <div class="message-content">
-                <p><MT_TRANS phrase="Your selected weblog has been deleted."></p>
+                <p><MT_TRANS phrase="Your selected blog has been deleted."></p>
             </div>
         </div>
     </TMPL_IF>
     <TMPL_IF NAME=TOO_MANY_BLOGS>
         <div class="error-message message">
             <div class="message-content">
-                <p class="message"><MT_TRANS phrase="You cannot create any more weblogs"></p>
+                <p class="message"><MT_TRANS phrase="You cannot create any more blogs"></p>
             </div>
         </div>
     </TMPL_IF>
     <TMPL_IF NAME=SAVED>
         <div class="success-message message">
             <div class="message-content">
-                <p><MT_TRANS phrase="The default weblog for your site has been changed."></p>
+                <p><MT_TRANS phrase="The default blog for your site has been changed."></p>
             </div>
         </div>
     </TMPL_IF>
@@ -32,8 +32,10 @@
             <TMPL_LOOP NAME=BLOG_LOOP>
                 <li class="list-item">
                     <a href="<TMPL_VAR NAME=SCRIPT_URL>/manage?blog_id=<TMPL_VAR NAME=BLOG_ID>">
-                        <span class="list-item-inner">
-                            <span class="list-item-label"><TMPL_VAR NAME=BLOG_NAME ESCAPE=HTML></span>
+                        <span class="li-inset">
+                            <span class="li-status">
+                                <span class="li-label"><TMPL_VAR NAME=BLOG_NAME ESCAPE=HTML></span>
+                            </span>
                         </span>
                     </a>
                 </li>
@@ -42,7 +44,7 @@
     <TMPL_ELSE>
         <div class="empty-item">
             <div class="item">
-                <p class="none"><MT_TRANS phrase="You currently do not have any weblogs."></p>
+                <p class="none"><MT_TRANS phrase="You currently do not have any blogs."></p>
             </div>
         </div>
     </TMPL_IF>

@@ -59,60 +59,66 @@ function chooseWeblog( url, id )
     </div>
     <TMPL_IF NAME=USER_HAS_WEBLOG>
         <TMPL_IF NAME=BLOGS>
-            <div id="new-post-menu" class="modal-menu hidden">
-                <div class="modal-menu-list">
+            <div id="new-post-menu" class="modal hidden">
+                <div class="modal-list">
                     <h2 class="list-header"><MT_TRANS phrase="Select a blog"></h2>
                     <ul class="list">
                         <TMPL_LOOP NAME=BLOGS>
                             <li class="list-item">
                                 <a href="<TMPL_VAR NAME=SCRIPT_URL>?__mode=view&amp;_type=entry&amp;blog_id=<TMPL_VAR NAME=BLOG_ID>">
-                                    <span class="list-item-inner">
-                                        <span class="list-item-label"><TMPL_VAR NAME=BLOG_NAME ESCAPE=HTML></span>
+                                    <span class="li-inset">
+                                        <span class="li-status">
+                                            <span class="li-label"><TMPL_VAR NAME=BLOG_NAME ESCAPE=HTML></span>
+                                        </span>
                                     </span>
                                 </a>
                             </li>
                         </TMPL_LOOP>
                     </ul>
                 </div>
-                <div class="modal-menu-close">
+                <div class="modal-close">
                     <a href="#" onclick="return concealWeblogs( 'new-post-menu' )"><img src="<TMPL_VAR NAME=STATIC_URI>images/iphone/buttons/close.png" alt="<MT_TRANS phrase="Close">" width="30" height="30" /></a>
                 </div>
             </div>
-            <div id="list-posts-menu" class="modal-menu hidden">
-                <div class="modal-menu-list">
+            <div id="list-posts-menu" class="modal hidden">
+                <div class="modal-list">
                     <h2 class="list-header"><MT_TRANS phrase="Select a blog"></h2>
                     <ul class="list">
                         <TMPL_LOOP NAME=BLOGS>
                             <li class="list-item">
                                 <a href="<TMPL_VAR NAME=SCRIPT_URL>?__mode=list_entries&amp;blog_id=<TMPL_VAR NAME=BLOG_ID>">
-                                    <span class="list-item-inner">
-                                        <span class="list-item-label"><TMPL_VAR NAME=BLOG_NAME ESCAPE=HTML></span>
+                                    <span class="li-inset">
+                                        <span class="li-status">
+                                            <span class="li-label"><TMPL_VAR NAME=BLOG_NAME ESCAPE=HTML></span>
+                                        </span>
                                     </span>
                                 </a>
                             </li>
                         </TMPL_LOOP>
                     </ul>
                 </div>
-                <div class="modal-menu-close">
+                <div class="modal-close">
                     <a href="#" onclick="return concealWeblogs( 'list-posts-menu' )"><img src="<TMPL_VAR NAME=STATIC_URI>images/iphone/buttons/close.png" alt="<MT_TRANS phrase="Close">" width="30" height="30" /></a>
                 </div>
             </div>
-            <div id="edit-comments-menu" class="modal-menu hidden">
-                <div class="modal-menu-list">
+            <div id="edit-comments-menu" class="modal hidden">
+                <div class="modal-list">
                     <h2 class="list-header"><MT_TRANS phrase="Select a blog"></h2>
                     <ul class="list">
                         <TMPL_LOOP NAME=BLOGS>
                             <li class="list-item">
                                 <a href="<TMPL_VAR NAME=SCRIPT_URL>?__mode=list_comments&amp;blog_id=<TMPL_VAR NAME=BLOG_ID>">
-                                    <span class="list-item-inner">
-                                        <span class="list-item-label"><TMPL_VAR NAME=BLOG_NAME ESCAPE=HTML></span>
+                                    <span class="li-inset">
+                                        <span class="li-status">
+                                            <span class="li-label"><TMPL_VAR NAME=BLOG_NAME ESCAPE=HTML></span>
+                                        </span>
                                     </span>
                                 </a>
                             </li>
                         </TMPL_LOOP>
                     </ul>
                 </div>
-                <div class="modal-menu-close">
+                <div class="modal-close">
                     <a href="#" onclick="return concealWeblogs( 'edit-comments-menu' )"><img src="<TMPL_VAR NAME=STATIC_URI>images/iphone/buttons/close.png" alt="<MT_TRANS phrase="Close">" width="30" height="30" /></a>
                 </div>
             </div>

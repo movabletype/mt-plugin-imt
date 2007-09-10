@@ -1,4 +1,4 @@
-/* TypePad for iPhone ===================================================== */
+/* TypePad for iPhone Styles ============================================== */
 
 /* Reset ------------------------------------------------------------------ */
 
@@ -48,10 +48,12 @@ body, input, select, textarea {
 }
 
 #header h1 {
+    overflow: hidden;
+    height: 30px;
+    color: #fff;
     font-size: 20px;
     line-height: 30px;
     font-weight: bold;
-    color: #fff;
     text-align: center;
     text-shadow: #25688c 0px -1px 1px;
 }
@@ -85,13 +87,13 @@ body, input, select, textarea {
 /* Content ---------------------------------------------------------------- */
 
 #content {
-    min-height: 276px;
+    min-height: 286px;
     background-color: #fff;
 }
 
 .page-login #content,
 .page-main #content {
-    background: #000 url(../images/iphone/backgrounds/content.png) repeat-x left top;
+    background: #0d0d0d url(../images/iphone/backgrounds/content.png) repeat-x left top;
 }
 
 .page-mobile #content {
@@ -104,25 +106,28 @@ body, input, select, textarea {
 #footer {
     position: relative;
     border-top: 1px solid #222;
-    padding: 6px 40px 7px;
-    color: #fff;
-    font-size: 10px;
-    line-height: 13px;
-    text-align: center;
- /* background: #000 url(../images/iphone/backgrounds/footer.png) repeat-x left center; */
-    background: #000;
+    padding: 8px 20px 9px;
+    background: #000 url(../images/iphone/backgrounds/footer.png) repeat-x left center;
 }
 
-#footer a {
-    color: #fff;
+#footer .copyright {
+    color: #ccc;
+    font-size: 10px;
+    line-height: 12px;
+    text-align: center;
+    text-shadow: #000 0px 1px 1px;
+}
+
+#footer .copyright a {
+    color: #ccc;
     text-decoration: none;
 }
 
 #footer .logout {
     position: absolute;
     overflow: hidden;
-    bottom: 10px;
-    right: 10px;
+    bottom: 5px;
+    right: 5px;
     width: 20px;
     height: 20px;
 }
@@ -262,6 +267,7 @@ body, input, select, textarea {
 .list-item {
     width: 100%;
     border-bottom: 1px solid #d9d9d9;
+    color: #666;
     background-color: #fff;
 }
 
@@ -271,46 +277,70 @@ body, input, select, textarea {
 
 .list-item a {
     display: block;
-    padding: 10px;
     color: #000;
-    font-size: 20px;
-    line-height: 23px;
-    font-weight: bold;
     text-decoration: none;
 }
 
-.list-item-inner {
+.li-inset {
     display: block;
-    width: 100%;
+    padding: 10px;
+}
+
+.li-status {
+    display: block;
+}
+
+a .li-status {
+    padding-right: 18px;
     background: url(../images/iphone/arrow.png) no-repeat center right;
 }
 
-.item-published .list-item-inner {
-    background: url(../images/iphone/arrow.png) no-repeat center right, url(../images/iphone/status/published.png) no-repeat center left;
+.item-published .li-status {
+    padding-left: 22px;
+    background: url(../images/iphone/status/published.png) no-repeat center left;
 }
 
-.item-draft .list-item-inner,
-.item-moderated .list-item-inner {
-    background: url(../images/iphone/arrow.png) no-repeat center right, url(../images/iphone/status/moderated.png) no-repeat center left;
+.item-published a .li-status {
+    background: url(../images/iphone/arrow.png) no-repeat center right,
+                url(../images/iphone/status/published.png) no-repeat center left;
 }
 
-.list-item-label {
+.item-draft .li-status,
+.item-moderated .li-status {
+    padding-left: 22px;
+    background: url(../images/iphone/status/moderated.png) no-repeat center left;
+}
+
+.item-draft a .li-status,
+.item-moderated a .li-status {
+    background: url(../images/iphone/arrow.png) no-repeat center right,
+                url(../images/iphone/status/moderated.png) no-repeat center left;
+}
+
+.li-label,
+.li-details {
     display: block;
     overflow: hidden;
-    height: 23px;
-    padding-right: 18px;
 }
 
-.item-published .list-item-label,
-.item-draft .list-item-label,
-.item-moderated .list-item-label {
-    padding-left: 22px;
+.li-label {
+    height: 23px;
+    font-size: 20px;
+    line-height: 23px;
+    font-weight: bold;
+}
+
+.li-details {
+    height: 14px;
+    margin-top: 1px;
+    font-size: 12px;
+    line-height: 14px;
 }
 
 
 /* Modal */
 
-.modal-menu {
+.modal {
     position: absolute;
     top: 0;
     left: 0;
@@ -319,7 +349,7 @@ body, input, select, textarea {
     z-index: 1;
 }
 
-.modal-menu-list {
+.modal-list {
     min-height: 314px;
     border: 1px solid #333;
     padding: 5px;
@@ -328,26 +358,30 @@ body, input, select, textarea {
     -webkit-border-radius: 10px;
 }
 
-.modal-menu-close {
+.modal-close {
     position: absolute;
     top: 5px;
     left: 5px;
 }
 
-.modal-menu .list-header {
+.modal .list-header {
     border: 1px solid #333;
     padding: 4px 9px;
     -webkit-border-top-left-radius: 5px;
     -webkit-border-top-right-radius: 5px;
 }
 
-.modal-menu .list-item {
+.modal .list-item {
     border-color: #262626;
     background-color: #111;
 }
 
-.modal-menu .list-item a {
+.modal .list-item a {
     color: #fff;
+}
+
+.modal .li-details {
+    color: #999;
 }
 
 
@@ -394,6 +428,10 @@ body, input, select, textarea {
     font-size: 11px;
     line-height: 13px;
     text-align: center;
+}
+
+.menu .mi-label-narrow {
+    padding: 0 5px;
 }
 
 
@@ -547,14 +585,21 @@ body, input, select, textarea {
     background: #cf9;
 }
 
+.warning-message .message-content {
+    border-color: #fcc;
+    background: #fcc url(../images/iphone/status/error.png) no-repeat 5px 7px;
+}
+
 .error-message .message-content {
     border-color: #fcc;
     background: #fcc url(../images/iphone/status/error.png) no-repeat 5px 7px;
 }
 
-.warning-message .message-content {
-    border-color: #fcc;
-    background: #fcc url(../images/iphone/status/error.png) no-repeat 5px 7px;
+.zerostate-message .message-content {
+    padding-left: 9px;
+    padding-right: 9px;
+    border-color: #ccc;
+    background: #ccc;
 }
 
 

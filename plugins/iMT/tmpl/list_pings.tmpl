@@ -47,13 +47,15 @@
                 <TMPL_IF NAME=PING_CAN_EDIT>
                     <a href="<TMPL_VAR NAME=SCRIPT_PARENT_URL>/post?__mode=edit_ping&amp;id=<TMPL_VAR NAME=PING_ID>&amp;blog_id=<TMPL_VAR NAME=BLOG_ID><TMPL_IF NAME=OFFSET>&amp;offset=<TMPL_VAR NAME=OFFSET></TMPL_IF>">
                 </TMPL_IF>
-                <span class="list-item-inner">
-                    <span class="list-item-label">
-                        <TMPL_IF NAME=PING_TITLE>
-                            <TMPL_VAR NAME=PING_TITLE ESCAPE=HTML>
-                        <TMPL_ELSE>
-                            <MT_TRANS phrase="[No Title]">
-                        </TMPL_IF>
+                <span class="li-inset">
+                    <span class="li-status">
+                        <span class="li-label">
+                            <TMPL_IF NAME=PING_TITLE>
+                                <TMPL_VAR NAME=PING_TITLE ESCAPE=HTML>
+                            <TMPL_ELSE>
+                                <MT_TRANS phrase="[No Title]">
+                            </TMPL_IF>
+                        </span>
                     </span>
                 </span>
                 <TMPL_IF NAME=PING_CAN_EDIT>
