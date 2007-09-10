@@ -1,0 +1,127 @@
+<TMPL_INCLUDE NAME="header.tmpl">
+
+<div id="header">
+    <h1><MT_TRANS phrase="Edit TrackBack"></h1>
+    <div class="home"><a href="<TMPL_VAR NAME=SCRIPT_BASE_URL>"><img src="<TMPL_VAR NAME=STATIC_URI>images/iphone/buttons/global/home.png" alt="<MT_TRANS phrase="Home">" width="30" height="26" /></a></div>
+    <div class="site"><a href="<TMPL_VAR NAME=BLOG_SITE_URL>" target="_blank"><img src="<TMPL_VAR NAME=STATIC_URI>images/iphone/buttons/global/site.png" alt="<MT_TRANS phrase="View site">" width="30" height="26" /></a></div>
+</div>
+<div id="content">
+    <div class="tabs">
+        <ul>
+            <li><a href="<TMPL_VAR NAME=SCRIPT_URL>?blog_id=<TMPL_VAR NAME=BLOG_ID>"><MT_TRANS phrase="New Post"></a></li>
+            <li><a href="<TMPL_VAR NAME=SCRIPT_URL>?__mode=list_comments&amp;blog_id=<TMPL_VAR NAME=BLOG_ID>"><MT_TRANS phrase="Comments"></a></li>
+            <li><a href="<TMPL_VAR NAME=SCRIPT_URL>?__mode=list_entries&amp;blog_id=<TMPL_VAR NAME=BLOG_ID>"><MT_TRANS phrase="Posts"></a></li>
+        </ul>
+    </div>
+    <TMPL_IF NAME=SAVED>
+        <div class="success-message message">
+            <div class="message-content">
+                <p><MT_TRANS phrase="Your changes to the TrackBack have been made and have been published to your site."></p>
+            </div>
+        </div>
+    </TMPL_IF>
+    <div class="editor">
+        <div class="excerpt-field meta-field field">
+            <div class="field-name">
+                <div class="field-name-inner">
+                    <MT_TRANS phrase="Excerpt:">
+                </div>
+            </div>
+            <div class="field-value">
+                <div class="field-value-inner">
+                    <TMPL_VAR NAME=PING_EXCERPT ESCAPE=HTML>
+                </div>
+            </div>
+        </div>
+        <TMPL_IF NAME=PING_TITLE>
+            <div class="post-field meta-field field">
+                <div class="field-name">
+                    <div class="field-name-inner">
+                        <MT_TRANS phrase="Title:">
+                    </div>
+                </div>
+                <div class="field-value">
+                    <div class="field-value-inner">
+                        <TMPL_VAR NAME=PING_TITLE ESCAPE=HTML>
+                    </div>
+                </div>
+            </div>
+        </TMPL_IF>
+        <TMPL_IF NAME=PING_BLOG_NAME>
+            <div class="weblog-field meta-field field">
+                <div class="field-name">
+                    <div class="field-name-inner">
+                        <MT_TRANS phrase="Source:">
+                    </div>
+                </div>
+                <div class="field-value">
+                    <div class="field-value-inner">
+                        <a href="<TMPL_VAR NAME=SCRIPT_PARENT_URL>/post?__mode=redirect_confirm&amp;blog_id=<TMPL_VAR NAME=BLOG_ID>&amp;url=<TMPL_VAR NAME=PING_SOURCE_URL ESCAPE=HTML>"><TMPL_VAR NAME=PING_BLOG_NAME ESCAPE=HTML></a>
+                    </div>
+                </div>
+            </div>
+        </TMPL_IF>
+        <TMPL_IF NAME=PING_CREATED_ON>
+            <div class="created_on-field meta-field field">
+                <div class="field-name">
+                    <div class="field-name-inner">
+                        <MT_TRANS phrase="Posted:">
+                    </div>
+                </div>
+                <div class="field-value">
+                    <div class="field-value-inner">
+                        <TMPL_VAR NAME=PING_CREATED_ON>
+                    </div>
+                </div>
+            </div>
+        </TMPL_IF>
+        <TMPL_IF NAME=ENTRY_TITLE>
+            <div class="entry-field meta-field field">
+                <div class="field-name">
+                    <div class="field-name-inner">
+                        <MT_TRANS phrase="On Post:">
+                    </div>
+                </div>
+                <div class="field-value">
+                    <div class="field-value-inner">
+                        <TMPL_VAR NAME=ENTRY_TITLE ESCAPE=HTML>
+                    </div>
+                </div>
+            </div>
+        </TMPL_IF>
+        <TMPL_IF NAME=PING_STATUS>
+            <div class="status-field meta-field field">
+                <div class="field-name">
+                    <div class="field-name-inner">
+                        <MT_TRANS phrase="Status:">
+                    </div>
+                </div>
+                <div class="field-value">
+                    <div class="field-value-inner">
+                        <TMPL_VAR NAME=PING_STATUS>
+                    </div>
+                </div>
+            </div>
+        </TMPL_IF>
+        <div class="button-bar">
+            <TMPL_UNLESS NAME=PING_IS_VISIBLE>
+                <a href="#" onclick="return publishTrackback()" class="button"><MT_TRANS phrase="Publish"></a>
+            <TMPL_ELSE>
+                <a href="#" onclick="return unpublishTrackback()" class="button"><MT_TRANS phrase="Unpublish"></a>
+            </TMPL_UNLESS>
+            <a href="#" onclick="return deleteTrackback( 'delete', '<MT_TRANS phrase="Are you sure you want to permanently delete this TrackBack?" escape="js">' )" class="delete-button button"><MT_TRANS phrase="Delete"></a>
+            <a href="#" onclick="return deleteTrackback( 'junk', '<MT_TRANS phrase="Are you sure you want to delete this TrackBack and report it as spam to TypePad?" escape="js">' )" class="delete-button button"><MT_TRANS phrase="Report Spam"></a>
+        </div>
+    </div>
+</div>
+
+<form id="hidden-form" action="<TMPL_VAR NAME=SCRIPT_URL>" method="post">
+    <input type="hidden" name="__mode" value="set_ping_status" />
+    <input type="hidden" name="id" value="<TMPL_VAR NAME=PING_ID>" />
+    <input type="hidden" name="blog_id" value="<TMPL_VAR NAME=BLOG_ID>" />
+    <input type="hidden" name="status" value="" />
+    <input type="hidden" name="magic_token" value="<TMPL_VAR NAME=MAGIC_TOKEN ESCAPE=HTML>" />
+    <input type="hidden" name="session_id" value="<TMPL_VAR NAME=SESSION_ID>" />
+</form>
+
+<TMPL_INCLUDE NAME="footer.tmpl">

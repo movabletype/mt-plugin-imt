@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+    "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>TypePad</title>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="maximum-scale=1.0,width=320,initial-scale=1.0" />
+    <link rel="stylesheet" href="<TMPL_VAR NAME=STATIC_URI>plugins/iphone/css/iphone.css" type="text/css" media="screen" />
+    <script type="text/javascript" src="<TMPL_VAR NAME=STATIC_URI>js/tc.js"></script>
+    <script type="text/javascript" src="<TMPL_VAR NAME=STATIC_URI>plugins/iphone/js/iphone.js"></script>
+</head>
+<body>
+
+<div id="header">
+    <h1>Error</h1>
+</div>
+<div id="content">
+    <div class="preview">
+        <p>Sorry for the inconvenience.</p>
+        <!-- <TMPL_VAR NAME=ERROR ESCAPE=HTML> -->
+    </div>
+    <div class="button-bar">
+        <a href="<TMPL_VAR NAME=SCRIPT_URL>" class="button">Home</a>
+    </div>
+</div>
+<div id="footer">
+    <a href="http://www.movabletype.com/">Movable Type</a> &#169; 2003&#8211;2007 Six Apart, Ltd.<br />All Rights Reserved.
+    <div class="logout"><a href="<TMPL_VAR NAME=SCRIPT_URL>?__mode=logout" onclick="return confirmLogout( 'Are you sure you want to sign out?' )"><img src="<TMPL_VAR NAME=STATIC_URI>plugins/iphone/images/iphone/buttons/global/logout.png" alt="Sign out" width="20" height="20" /></a></div>
+</div>
+
+</body>
+</html>

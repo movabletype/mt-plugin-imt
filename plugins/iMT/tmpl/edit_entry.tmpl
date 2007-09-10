@@ -1,0 +1,271 @@
+<TMPL_INCLUDE NAME="header.tmpl">
+
+<TMPL_IF NAME=NEW_OBJECT>
+<script type="text/javascript">
+<!--
+var dirty = false;
+function checkDirty()
+{
+    if( dirty )
+        return "<TMPL_UNLESS NAME=EDIT_PAGE><MT_TRANS phrase="You have unsaved changes to your post that will be lost." escape="js"><TMPL_ELSE><MT_TRANS phrase="You have unsaved changes to your page that will be lost." escape="js"></TMPL_UNLESS>";
+}
+TC.attachLoadEvent( focusTitle );
+TC.attachWindowEvent( 'beforeunload', checkDirty );
+// -->
+</script>
+</TMPL_IF>
+
+<div id="header">
+    <h1><TMPL_VAR NAME=BLOG_NAME ESCAPE=HTML></h1>
+    <div class="home"><a href="<TMPL_VAR NAME=SCRIPT_BASE_URL>"><img src="<TMPL_VAR NAME=STATIC_URI>images/iphone/buttons/global/home.png" alt="<MT_TRANS phrase="Home">" width="30" height="26" /></a></div>
+    <div class="site"><a href="<TMPL_IF NAME=NEW_OBJECT><TMPL_VAR NAME=BLOG_URL><TMPL_ELSE><TMPL_IF NAME=STATUS_PUBLISH><TMPL_VAR NAME=ENTRY_PERMALINK><TMPL_ELSE><TMPL_VAR NAME=BLOG_URL></TMPL_IF></TMPL_IF>" target="_blank"><img src="<TMPL_VAR NAME=STATIC_URI>images/iphone/buttons/global/site.png" alt="<TMPL_IF NAME=NEW_OBJECT><MT_TRANS phrase="View site"><TMPL_ELSE><TMPL_IF NAME=STATUS_PUBLISH><TMPL_UNLESS NAME=EDIT_PAGE><MT_TRANS phrase="View post"><TMPL_ELSE><MT_TRANS phrase="View page"></TMPL_UNLESS><TMPL_ELSE><MT_TRANS phrase="View site"></TMPL_IF></TMPL_IF>" width="30" height="26" /></a></div>
+</div>
+<div id="content">
+    <div class="tabs">
+        <ul>
+            <li<TMPL_IF NAME=NEW_OBJECT> class="yah"</TMPL_IF>><a href="<TMPL_VAR NAME=SCRIPT_URL>?__mode=edit_entry&amp;blog_id=<TMPL_VAR NAME=BLOG_ID>"><MT_TRANS phrase="New Post"></a></li>
+            <li><a href="<TMPL_VAR NAME=SCRIPT_URL>?__mode=list_comments&amp;blog_id=<TMPL_VAR NAME=BLOG_ID>"><MT_TRANS phrase="Comments"></a></li>
+            <li<TMPL_UNLESS NAME=NEW_OBJECT> class="yah"</TMPL_UNLESS>><a href="<TMPL_VAR NAME=SCRIPT_URL>?__mode=list_entries&amp;blog_id=<TMPL_VAR NAME=BLOG_ID>"><MT_TRANS phrase="Posts"></a></li>
+        </ul>
+    </div>
+    <TMPL_UNLESS NAME=ERROR>
+        <TMPL_IF NAME=SAVED_ADDED>
+            <div class="success-message message">
+                <div class="message-content">
+                    <p><MT_TRANS phrase="Your post has been saved."></p>
+                </div>
+            </div>
+        </TMPL_IF>
+        <TMPL_IF NAME=SAVED_CHANGES>
+            <div class="success-message message">
+                <div class="message-content">
+                    <p><MT_TRANS phrase="Your changes have been saved."></p>
+                </div>
+            </div>
+        </TMPL_IF>
+    </TMPL_UNLESS>
+    <TMPL_IF NAME=SAVED_PREFS>
+        <div class="success-message message">
+            <div class="message-content">
+                <p><MT_TRANS phrase="Your customization preferences have been saved and are visible in the form below."></p>
+            </div>
+        </div>
+    </TMPL_IF>
+    <TMPL_IF NAME=SAVED_COMMENT>
+        <div class="success-message message">
+            <div class="message-content">
+                <p><MT_TRANS phrase="Your changes to the comment have been saved."> <TMPL_IF NAME=CAN_REBUILD><MT_TRANS phrase="_USAGE_REBUILD"></TMPL_IF></p>
+            </div>
+        </div>
+    </TMPL_IF>
+    <TMPL_IF NAME=SAVED_NOTIFY>
+        <div class="success-message message">
+            <div class="message-content">
+                <p><MT_TRANS phrase="Your notification has been sent."></p>
+            </div>
+        </div>
+    </TMPL_IF>
+    <TMPL_IF NAME=ERROR_JUNIOR_CANNOT_PUBLISH>
+        <div class="error-message message">
+            <div class="message-content">
+                <p><MT_TRANS phrase="The post has been saved, but not published."> <MT_TRANS phrase="You are not authorized to publish a post."></p>
+            </div>
+        </div>
+    </TMPL_IF>
+    <TMPL_IF NAME=ERROR_INDIVIDUAL_COMMENTS>
+        <div class="error-message message">
+            <div class="message-content">
+                <p><MT_TRANS phrase="The post has been saved, but not published."> <MT_TRANS phrase="You enabled comments on this post, but you do not have Individual entry archives enabled. Individual entry archives are required for comments."></p>
+            </div>
+        </div>
+    </TMPL_IF>
+    <TMPL_IF NAME=DELETED_COMMENT>
+        <div class="success-message message">
+            <div class="message-content">
+                <p><MT_TRANS phrase="You have successfully deleted the selected comment(s)."></p>
+            </div>
+        </div>
+    </TMPL_IF>
+    <TMPL_IF NAME=DELETED_PING>
+        <div class="success-message message">
+            <div class="message-content">
+                <p><MT_TRANS phrase="You have successfully deleted the selected TrackBack ping(s)."></p>
+            </div>
+        </div>
+    </TMPL_IF>
+    <div class="editor">
+    <form name="entry_form" method="post" action="<TMPL_VAR NAME=SCRIPT_URL>">
+        <input type="hidden" name="session_id" value="<TMPL_VAR NAME=SESSION_ID>" />
+        <TMPL_IF NAME=NEW_OBJECT>
+            <input type="hidden" name="author_id" value="<TMPL_VAR NAME=USER_ID>" />
+        <TMPL_ELSE>
+            <input type="hidden" name="id" value="<TMPL_VAR NAME=ID>" />
+        </TMPL_IF>
+        <input type="hidden" name="blog_id" id="blog_id" value="<TMPL_VAR NAME=BLOG_ID>" />
+        <input type="hidden" name="status_old" value="<TMPL_VAR NAME=STATUS>" />
+        <input type="hidden" name="__mode" value="save_entry" />
+        <input type="hidden" name="magic_token" value="<TMPL_VAR NAME=MAGIC_TOKEN ESCAPE=HTML>" />
+        <input type="hidden" name="add_photo_id" value="<TMPL_VAR NAME=ADD_PHOTO_ID ESCAPE=HTML>" />
+        <div class="title-field meta-field field">
+            <div class="field-name">
+                <div class="field-name-inner">
+                    <label for="title"><MT_TRANS phrase="Title:"></label>
+                </div>
+            </div>
+            <div class="field-value">
+                <div class="field-value-inner">
+                    <input name="title" id="title" value="<TMPL_VAR NAME=TITLE ESCAPE=HTML>" maxlength="255" />
+                </div>
+            </div>
+        </div>
+        <div class="category-field meta-field field">
+            <div class="field-name">
+                <div class="field-name-inner">
+                    <label for="category_id"><MT_TRANS phrase="Category:"></label>
+                </div>
+            </div>
+            <div class="field-value">
+                <div class="field-value-inner">
+                    <select name="category_ids" id="category_id">
+                        <option value=""><MT_TRANS phrase="No Category Selected"></option>
+                        <TMPL_IF NAME=CURRENT_CATEGORIES>
+                            <option value="<TMPL_VAR NAME=CURRENT_CATEGORY_IDS>" selected="selected"><TMPL_VAR NAME=CURRENT_CATEGORIES ESCAPE=HTML></option><TMPL_ELSE><TMPL_LOOP NAME="CATEGORY_LOOP"><option value="<TMPL_VAR NAME=CATEGORY_ID>"<TMPL_IF NAME=CATEGORY_IS_SELECTED> selected="selected"</TMPL_IF>><TMPL_VAR NAME=CATEGORY_LABEL></option></TMPL_LOOP>
+                        </TMPL_IF>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="body-field content-field field">
+            <div class="field-name">
+                <div class="field-name-inner">
+                    <label for="text"><MT_TRANS phrase="Body:"></label>
+                </div>
+            </div>
+            <div class="field-value">
+                <div class="field-value-inner">
+                    <textarea name="text" id="text" rows="<TMPL_UNLESS NAME=DISP_PREFS_SHOW_EXTENDED>10<TMPL_ELSE>5</TMPL_UNLESS>" onchange="setDirty()"><TMPL_VAR NAME=TEXT ESCAPE=HTML></textarea>
+                </div>
+            </div>
+        </div>
+        <TMPL_IF NAME=TEXT_CONVERTED><input type="hidden" name="text_converted" id="text_converted" value="<TMPL_VAR NAME=TEXT_CONVERTED ESCAPE=HTML>" /></TMPL_IF>
+        <TMPL_IF NAME=DISP_PREFS_SHOW_EXTENDED>
+            <div class="extended-field content-field field">
+                <div class="field-name">
+                    <div class="field-name-inner">
+                        <label for="text_more"><MT_TRANS phrase="Extended:"></label>
+                    </div>
+                </div>
+                <div class="field-value">
+                    <div class="field-value-inner">
+                        <textarea name="text_more" id="text_more" rows="5" onchange="setDirty()"><TMPL_VAR NAME=TEXT_MORE ESCAPE=HTML></textarea>
+                    </div>
+                </div>
+            </div>
+            <TMPL_IF NAME=TEXT_MORE_CONVERTED><input type="hidden" name="text_more_converted" id="text_more_converted" value="<TMPL_VAR NAME=TEXT_MORE_CONVERTED ESCAPE=HTML>" /></TMPL_IF>
+        </TMPL_IF>
+        <TMPL_IF NAME=DISP_PREFS_SHOW_EXCERPT>
+            <div class="excerpt-field meta-field field">
+                <div class="field-name">
+                    <div class="field-name-inner">
+                        <label for="excerpt"><MT_TRANS phrase="Excerpt:"></label>
+                    </div>
+                </div>
+                <div class="field-value">
+                    <div class="field-value-inner">
+                        <textarea name="excerpt" id="excerpt" rows="2"><TMPL_VAR NAME=EXCERPT ESCAPE=HTML></textarea>
+                    </div>
+                </div>
+            </div>
+        </TMPL_IF>
+        <TMPL_IF NAME=DISP_PREFS_SHOW_TAGS>
+            <div class="tags-field meta-field field">
+                <div class="field-name">
+                    <div class="field-name-inner">
+                        <label for="tags"><MT_TRANS phrase="Tags:"></label>
+                    </div>
+                </div>
+                <div class="field-value">
+                    <div class="field-value-inner">
+                        <input name="tags" id="tags" value="<TMPL_VAR NAME=TAGS ESCAPE=HTML>" />
+                    </div>
+                </div>
+            </div>
+        </TMPL_IF>
+        <div class="status-field meta-field field">
+            <div class="field-name">
+                <div class="field-name-inner">
+                    <label for="status"><MT_TRANS phrase="Post Status:"></label>
+                </div>
+            </div>
+            <div class="field-value">
+                <div class="field-value-inner">
+                    <select name="status" id="status">
+                        <option value="1"<TMPL_IF NAME="STATUS_DRAFT"> selected="selected"</TMPL_IF>><MT_TRANS phrase="Draft"></option>
+                        <TMPL_IF NAME=CAN_PUBLISH_POST>
+                            <option value="2"<TMPL_IF NAME="STATUS_PUBLISH"> selected="selected"</TMPL_IF>><MT_TRANS phrase="Publish Now"></option>
+                        </TMPL_IF>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="format-field meta-field field">
+            <div class="field-name">
+                <div class="field-name-inner">
+                    <label for="convert_breaks"><MT_TRANS phrase="Formatting:"></label>
+                </div>
+            </div>
+            <div class="field-value">
+                <div class="field-value-inner">
+                    <select name="convert_breaks" id="convert_breaks">
+                        <TMPL_LOOP NAME=TEXT_FILTERS>
+                            <option value="<TMPL_VAR NAME=FILTER_KEY>"<TMPL_IF NAME=FILTER_SELECTED> selected="selected"</TMPL_IF>><TMPL_VAR NAME=FILTER_LABEL ESCAPE=HTML></option>
+                        </TMPL_LOOP>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <input type="hidden" name="created_on"<TMPL_IF NAME=CREATED_ON> value="<TMPL_VAR NAME=CREATED_ON ESCAPE=HTML>"</TMPL_IF> />
+        <div class="comments-field meta-field field">
+            <div class="field-name">
+                <div class="field-name-inner">
+                    <label for="allow_comments"><MT_TRANS phrase="Comments:"></label>
+                </div>
+            </div>
+            <div class="field-value">
+                <div class="field-value-inner">
+                    <select name="allow_comments" id="allow_comments">
+                        <option value="0"<TMPL_IF NAME=ALLOW_COMMENTS_0> selected="selected"</TMPL_IF>><MT_TRANS phrase="None"></option>
+                        <option value="1"<TMPL_IF NAME=ALLOW_COMMENTS_1> selected="selected"</TMPL_IF>><MT_TRANS phrase="Open"></option>
+                        <option value="2"<TMPL_IF NAME=ALLOW_COMMENTS_2> selected="selected"</TMPL_IF>><MT_TRANS phrase="Closed"></option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="trackbacks-field meta-field field">
+            <div class="field-name">
+                <div class="field-name-inner">
+                    <label for="allow_pings"><MT_TRANS phrase="TrackBacks:"></label>
+                </div>
+            </div>
+            <div class="field-value">
+                <div class="field-value-inner">
+                    <select name="allow_pings" id="allow_pings">
+                        <option value="0"<TMPL_UNLESS NAME=ALLOW_PINGS> selected="selected"</TMPL_UNLESS>><MT_TRANS phrase="None"></option>
+                        <option value="1"<TMPL_IF NAME=ALLOW_PINGS> selected="selected"</TMPL_IF>><MT_TRANS phrase="Open"></option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="button-bar">
+            <input type="submit" name="save_entry" value="<MT_TRANS phrase="Save">" class="button" onclick="clearDirty()" /> 
+            <!-- (Preview support forthcoming...)
+            <input type="submit" name="preview_entry" value="<MT_TRANS phrase="Preview">" class="button" onclick="clearDirty()" /> -->
+            <TMPL_UNLESS NAME=NEW_OBJECT>
+                <a href="<TMPL_VAR NAME=SCRIPT_URL>?__mode=delete_confirm&amp;type=entry&amp;blog_id=<TMPL_VAR NAME=BLOG_ID>&amp;id=<TMPL_VAR NAME=ID>&amp;return=list_entries" class="delete-button button"><MT_TRANS phrase="Delete"></a>
+            </TMPL_UNLESS>
+        </div>
+    </form>
+    </div>
+</div>
+
+<TMPL_INCLUDE NAME="footer.tmpl">

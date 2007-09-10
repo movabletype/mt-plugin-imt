@@ -1,0 +1,129 @@
+<TMPL_INCLUDE NAME="header.tmpl">
+
+<script type="text/javascript">
+<!--
+function validateEmail( s )
+{
+    for( i = 0; i < s.length; i++ )
+        if( escape( s.charAt( i ) ).length > 3 )
+            return false;
+    return s.match(/^[\w\+.-]+@[\w-]+\.[\w.-]+[^.]$/);
+}
+function validate( f )
+{
+    for( c = 0; c < 5; c++ )
+    {
+        if( f.alternate_email[ c ].value && ( !validateEmail( f.alternate_email[ c ].value) || f.alternate_email[ c ].value.length > 75 ) )
+        {
+            alert( '<MT_TRANS phrase="One of your email addresses is invalid." escape="js">' );
+            return false;
+        }
+        f.alternate_email[ c ].value = f.alternate_email[ c ].value.toLowerCase();
+    }
+    return true;
+}
+// -->
+</script>
+
+<div class="page-mobile">
+
+<div id="header">
+    <h1><MT_TRANS phrase="Mobile Settings"></h1>
+    <div class="home"><a href="<TMPL_VAR NAME=SCRIPT_BASE_URL>"><img src="<TMPL_VAR NAME=STATIC_URI>images/iphone/buttons/global/home.png" alt="<MT_TRANS phrase="Home">" width="30" height="26" /></a></div>
+    <div class="site"><a href="<TMPL_VAR NAME=USER_SITE_URL>" target="_blank"><img src="<TMPL_VAR NAME=STATIC_URI>images/iphone/buttons/global/site.png" alt="<MT_TRANS phrase="View site">" width="30" height="26" /></a></div>
+</div>
+<div id="content">
+    <TMPL_IF NAME=SAVED>
+        <div class="success-message message">
+            <div class="message-content">
+                <p><MT_TRANS phrase="Your mobile settings have been updated."></p>
+            </div>
+        </div>
+    </TMPL_IF>
+    <TMPL_IF NAME=ERROR_EMAIL_INVALID>
+        <div class="error-message message">
+            <div class="message-content">
+                <p><MT_TRANS phrase="[_1] is not a valid email address." params="<TMPL_VAR NAME=EMAIL ESCAPE=HTML>" escape="html"></p>
+            </div>
+        </div>
+    </TMPL_IF>
+    <TMPL_IF NAME=ERROR_EMAIL_TAKEN>
+        <div class="error-message message">
+            <div class="message-content">
+                <p><MT_TRANS phrase="The email address [_1] is taken by another user." params="<TMPL_VAR NAME=EMAIL ESCAPE=HTML>" escape="html"></p>
+            </div>
+        </div>
+    </TMPL_IF>
+    <form name="profile" onsubmit="return validate( this )" method="post" action="<TMPL_VAR NAME=SCRIPT_URL>">
+        <input type="hidden" name="__mode" value="mobile_save" />
+        <input type="hidden" name="session_id" value="<TMPL_VAR NAME=SESSION_ID>" />
+        <input type="hidden" name="magic_token" value="<TMPL_VAR NAME=MAGIC_TOKEN ESCAPE=HTML>" />
+        <input type="hidden" name="email_mode" value="secret_email" />
+        <div class="setting-group">
+            <h2 class="setting-header-mini"><MT_TRANS phrase="Secret Email Address"></h2>
+            <div class="setting-highlight">
+                <a href="mailto:<TMPL_VAR NAME=SECRET_ADDRESS>"><TMPL_VAR NAME=SECRET_ADDRESS></a>
+            </div>
+            <p class="setting-note"><MT_TRANS phrase="Use this custom email address to send messages and photos to TypePad via email. (Email this address to yourself so that you can add it to your address book.)"></p>
+        </div>
+        <div class="setting-group">
+            <h2 class="setting-header"><MT_TRANS phrase="Authorization"></h2>
+            <div class="settings">
+                <TMPL_LOOP NAME=ALTERNATE_EMAILS>
+                    <div class="text-setting setting">
+                        <div class="setting-label"><MT_TRANS phrase="Email"></div>
+                        <div class="setting-field">
+                            <input name="alternate_email" value="<TMPL_VAR NAME=EMAIL ESCAPE=HTML>" size="25" maxlength="75" />
+                        </div>
+                    </div>
+                </TMPL_LOOP>
+            </div>
+            <p class="setting-note"><MT_TRANS phrase="Only messages sent from these email addresses will be accepted. (Include the addresses you use on your mobile devices.)"></p>
+        </div>
+        <div class="setting-group">
+            <h2 class="setting-header"><MT_TRANS phrase="Destination"></h2>
+            <div class="settings">
+                <div class="select-setting setting">
+                    <div class="setting-label"><label for="post_text_to"><MT_TRANS phrase="Text"></label></div>
+                    <div class="setting-field">
+                        <select name="post_text_to" id="post_text_to">
+                            <TMPL_LOOP NAME=POST_TEXT>
+                                <option value="<TMPL_VAR NAME=ITEM_ID>"<TMPL_IF NAME=ITEM_SELECTED> selected="selected"</TMPL_IF>><TMPL_VAR NAME=ITEM_NAME ESCAPE=HTML></option>
+                            </TMPL_LOOP>
+                        </select>
+                    </div>
+                </div>
+                <div class="select-setting setting">
+                    <div class="setting-label"><label for="post_image_to"><MT_TRANS phrase="Photos"></label></div>
+                    <div class="setting-field">
+                        <select name="post_image_to" id="post_image_to">
+                            <TMPL_LOOP NAME=POST_IMAGE>
+                                <option value="<TMPL_VAR NAME=ITEM_ID>"<TMPL_IF NAME=ITEM_SELECTED> selected="selected"</TMPL_IF>><TMPL_VAR NAME=ITEM_NAME ESCAPE=HTML></option>
+                            </TMPL_LOOP>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <p class="setting-note"><MT_TRANS phrase="Text messages or photos received via email are posted to a specific blog or album."></p>
+        </div>
+        <div class="setting-group">
+            <h2 class="setting-header"><MT_TRANS phrase="Notification"></h2>
+            <div class="settings">
+                <div class="checkbox-setting setting">
+                    <div class="setting-label"><label for="confirm_success"><MT_TRANS phrase="Send Email Notifications"></label></div>
+                    <div class="setting-field">
+                        <input type="checkbox" id="confirm_success" name="confirm_success" value="1"<TMPL_IF NAME=CONFIRM_SUCCESS> checked="checked"</TMPL_IF> />
+                    </div>
+                </div>
+            </div>
+            <p class="setting-note"><MT_TRANS phrase="Email notifications are sent automatically when a message is successfully posted."></p>
+        </div>
+        <div class="button-bar">
+            <input type="submit" value="<MT_TRANS phrase="Save Changes">" class="button" />
+        </div>
+    </form>
+</div>
+
+</div>
+
+<TMPL_INCLUDE NAME="footer.tmpl">

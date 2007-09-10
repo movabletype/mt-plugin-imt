@@ -1,0 +1,59 @@
+<TMPL_INCLUDE NAME="header.tmpl">
+
+<div id="header">
+    <h1><TMPL_VAR NAME=BLOG_NAME ESCAPE=HTML></h1>
+    <div class="home"><a href="<TMPL_VAR NAME=SCRIPT_BASE_URL>"><img src="<TMPL_VAR NAME=STATIC_URI>images/iphone/buttons/global/home.png" alt="<MT_TRANS phrase="Home">" width="30" height="26" /></a></div>
+    <div class="site"><a href="<TMPL_VAR NAME=BLOG_SITE_URL>" target="_blank"><img src="<TMPL_VAR NAME=STATIC_URI>images/iphone/buttons/global/site.png" alt="<MT_TRANS phrase="View site">" width="30" height="26" /></a></div>
+</div>
+<div id="content">
+    <TMPL_IF NAME=DELETED_COMMENT>
+        <div class="success-message message">
+            <div class="message-content">
+                <p><MT_TRANS phrase="You have successfully deleted the selected comment(s)."></p>
+            </div>
+        </div>
+    </TMPL_IF>
+    <TMPL_IF NAME=DELETED_PING>
+        <div class="success-message message">
+            <div class="message-content">
+                <p><MT_TRANS phrase="You have successfully deleted the selected ping(s)."></p>
+            </div>
+        </div>
+    </TMPL_IF>
+    <h2 class="list-header"><MT_TRANS phrase="Compose"></h2>
+    <ul class="list">
+        <li class="list-item">
+            <a href="<TMPL_VAR NAME=SCRIPT_PARENT_URL>/post?blog_id=<TMPL_VAR NAME=BLOG_ID>">
+                <span class="list-item-inner">
+                    <span class="list-item-label"><MT_TRANS phrase="Create a new post"></span>
+                </span>
+            </a>
+        </li>
+    </ul>
+    <h2 class="list-header"><MT_TRANS phrase="Manage"></h2>
+    <ul class="list">
+        <li class="list-item">
+            <a href="<TMPL_VAR NAME=SCRIPT_PARENT_URL>/post?__mode=list_entries&amp;blog_id=<TMPL_VAR NAME=BLOG_ID>">
+                <span class="list-item-inner">
+                    <span class="list-item-label"><MT_TRANS phrase="List posts"></span>
+                </span>
+            </a>
+        </li>
+        <li class="list-item">
+            <a href="<TMPL_VAR NAME=SCRIPT_PARENT_URL>/post?__mode=list_comments&amp;blog_id=<TMPL_VAR NAME=BLOG_ID>">
+                <span class="list-item-inner">
+                    <span class="list-item-label"><MT_TRANS phrase="List comments"></span>
+                </span>
+            </a>
+        </li>
+        <li class="list-item">
+            <a href="<TMPL_VAR NAME=SCRIPT_PARENT_URL>/post?__mode=list_pings&amp;blog_id=<TMPL_VAR NAME=BLOG_ID>">
+                <span class="list-item-inner">
+                    <span class="list-item-label"><MT_TRANS phrase="List TrackBacks"></span>
+                </span>
+            </a>
+        </li>
+    </ul>
+</div>
+
+<TMPL_INCLUDE NAME="footer.tmpl">

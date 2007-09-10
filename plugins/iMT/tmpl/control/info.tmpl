@@ -1,0 +1,9 @@
+<TMPL_INCLUDE NAME="header.tmpl">
+
+<ul>
+<TMPL_UNLESS NAME=USER_SUSPENDED>
+<li><a href="<TMPL_VAR NAME=SCRIPT_URL>/profile"><MT_TRANS phrase="Edit my author profile"></a></li>
+</TMPL_UNLESS>
+</ul>
+
+<TMPL_INCLUDE NAME="footer.tmpl">

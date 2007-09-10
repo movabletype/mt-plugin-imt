@@ -1,0 +1,35 @@
+<TMPL_INCLUDE NAME="header.tmpl">
+
+<div class="page-login">
+
+<div id="header">
+    <h1><TMPL_IF NAME=PORTAL_LABEL><TMPL_VAR NAME=PORTAL_LABEL ESCAPE=HTML><TMPL_ELSE><MT_TRANS phrase="TypePad"></TMPL_IF></h1>
+</div>
+<div id="content">
+    <TMPL_IF NAME=ERROR>
+        <div class="error-message message">
+            <div class="message-content">
+                <p><TMPL_VAR NAME=ERROR ESCAPE=HTML></p>
+            </div>
+        </div>
+    </TMPL_IF>
+    <form name="login_form" method="post" action="<TMPL_VAR NAME=SCRIPT_URL>">
+        <div class="login-fields">
+            <div>
+                <div><label for="username"><MT_TRANS phrase="Member Name"></label></div>
+                <div class="field"><input id="username" name="username" size="14" /></div>
+            </div>
+            <div>
+                <div><label for="password"><MT_TRANS phrase="Password"></label></div>
+                <div class="field"><input id="password" name="password" type="password" size="14" /></div>
+            </div>
+            <div class="button-bar">
+                <input type="submit" value="<MT_TRANS phrase="Sign In">" class="button" />
+            </div>
+        </div>
+    </form>
+</div>
+
+</div>
+
+<TMPL_INCLUDE NAME="footer.tmpl">

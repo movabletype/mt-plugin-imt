@@ -1,0 +1,698 @@
+/* TypePad for iPhone ===================================================== */
+
+/* Reset ------------------------------------------------------------------ */
+
+body {
+    background-color: #000;
+    -webkit-text-size-adjust: none;
+}
+
+html, body, div,
+ul, ol, li, dl, dt, dd,
+form, fieldset, input, select, textarea,
+h1, h2, h3, h4, h5, h6,
+pre, code, p, blockquote, hr,
+th, td {
+    margin: 0;
+    padding: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-size: 100%;
+    font-weight: normal;
+}
+
+ol, ul {
+    list-style: none;
+}
+
+a img {
+    border: 0;
+}
+
+
+/* General ---------------------------------------------------------------- */
+
+body, input, select, textarea {
+    font: 14px Helvetica, sans-serif;
+}
+
+
+/* Header ----------------------------------------------------------------- */
+
+#header {
+    position: relative;
+    border-bottom: 1px solid #693;
+    padding: 5px 40px 4px;
+    background: #9c6 url(../images/iphone/backgrounds/header.png) repeat-x left center;
+}
+
+#header h1 {
+    font-size: 20px;
+    line-height: 30px;
+    font-weight: bold;
+    color: #fff;
+    text-align: center;
+    text-shadow: #693 0px -1px 1px;
+}
+
+#header .home {
+    position: absolute;
+    overflow: hidden;
+    top: 7px;
+    left: 5px;
+    width: 30px;
+    height: 26px;
+}
+
+#header .site {
+    position: absolute;
+    overflow: hidden;
+    top: 7px;
+    right: 5px;
+    width: 30px;
+    height: 26px;
+}
+
+#header .home a,
+#header .home img,
+#header .site a,
+#header .site img {
+    display: block;
+}
+
+
+/* Content ---------------------------------------------------------------- */
+
+#content {
+    min-height: 276px;
+    background-color: #fff;
+}
+
+.page-login #content,
+.page-main #content {
+    background: #000 url(../images/iphone/backgrounds/content.png) repeat-x left top;
+}
+
+.page-mobile #content {
+    background: #c5ccd3;
+}
+
+
+/* Footer ----------------------------------------------------------------- */
+
+#footer {
+    position: relative;
+    border-top: 1px solid #222;
+    padding: 6px 40px 7px;
+    color: #fff;
+    font-size: 10px;
+    line-height: 13px;
+    text-align: center;
+ /* background: #000 url(../images/iphone/backgrounds/footer.png) repeat-x left center; */
+    background: #000;
+}
+
+#footer a {
+    color: #fff;
+    text-decoration: none;
+}
+
+#footer .logout {
+    position: absolute;
+    overflow: hidden;
+    bottom: 10px;
+    right: 10px;
+    width: 20px;
+    height: 20px;
+}
+
+#footer .logout a,
+#footer .logout img {
+    display: block;
+}
+
+/* Login ------------------------------------------------------------------ */
+
+.page-login .login-fields {
+    padding: 30px 30px 0;
+}
+
+.page-login label,
+.page-login .error {
+    color: #fff;
+}
+
+.page-login label {
+    display: block;
+    margin-bottom: 3px;
+}
+
+.page-login #username,
+.page-login #password {
+    width: 100%;
+    border-width: 0;
+    padding: 0;
+    -khtml-appearance: none;
+}
+
+.page-login .field {
+    margin-bottom: 10px;
+    border: 1px solid #fff;
+    padding: 5px;
+    background-color: #fff;
+    -webkit-border-radius: 5px;
+}
+
+.page-login .login-fields .button-bar {
+    padding: 10px 50px 1px;
+}
+
+
+/* Editor ----------------------------------------------------------------- */
+
+.editor .meta-field,
+.editor .content-field {
+    border-bottom: 1px solid #d9d9d9;
+    clear: both;
+}
+
+.editor .meta-field .field-name {
+    width: 90px;
+    float: left;
+    color: #666;
+}
+
+.editor .content-field .field-name {
+    display: none;
+}
+
+.editor .title-field .field-name {
+    width: 50px;
+}
+
+.editor .tags-field .field-name {
+    width: 50px;
+}
+
+.editor .category-field .field-name {
+    width: 75px;
+}
+
+.editor .meta-field .field-value {
+    margin-left: 90px;
+}
+
+.editor .title-field .field-value {
+    margin-left: 50px;
+}
+
+.editor .tags-field .field-value {
+    margin-left: 50px;
+}
+
+.editor .category-field .field-value {
+    margin-left: 75px;
+}
+
+.editor .meta-field .field-name-inner {
+    padding: 10px 0 0 10px;
+}
+
+.editor .meta-field .field-value-inner {
+    padding: 10px 10px 10px 0;
+}
+
+.editor .content-field .field-value-inner {
+    padding: 10px;
+}
+
+.editor #title,
+.editor #tags,
+.editor #category_id,
+.editor #text,
+.editor #text_more,
+.editor #excerpt,
+.editor #status,
+.editor #convert_breaks,
+.editor #allow_comments,
+.editor #allow_pings {
+    width: 100%;
+    border-width: 0;
+    padding: 0;
+    -khtml-appearance: none;
+}
+
+.editor #text,
+.editor #text_more {
+    display: block;
+}
+
+
+/* Lists ------------------------------------------------------------------ */
+
+.list-header {
+    color: #fff;
+    font-size: 12px;
+    line-height: 12px;
+    padding: 5px 10px;
+    background-color: #333;
+}
+
+.list-item {
+    width: 100%;
+    border-bottom: 1px solid #d9d9d9;
+    background-color: #fff;
+}
+
+.list-item:first-child {
+    border-top-width: 0;
+}
+
+.list-item a {
+    display: block;
+    padding: 10px;
+    color: #000;
+    font-size: 20px;
+    line-height: 23px;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.list-item-inner {
+    display: block;
+    width: 100%;
+    background: url(../images/iphone/arrow.png) no-repeat center right;
+}
+
+.item-published .list-item-inner {
+    background: url(../images/iphone/arrow.png) no-repeat center right, url(../images/iphone/status/published.png) no-repeat center left;
+}
+
+.item-draft .list-item-inner,
+.item-moderated .list-item-inner {
+    background: url(../images/iphone/arrow.png) no-repeat center right, url(../images/iphone/status/moderated.png) no-repeat center left;
+}
+
+.list-item-label {
+    display: block;
+    overflow: hidden;
+    height: 23px;
+    padding-right: 18px;
+}
+
+.item-published .list-item-label,
+.item-draft .list-item-label,
+.item-moderated .list-item-label {
+    padding-left: 22px;
+}
+
+
+/* Modal */
+
+.modal-menu {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 15px;
+    z-index: 1;
+}
+
+.modal-menu-list {
+    min-height: 314px;
+    border: 1px solid #333;
+    padding: 5px;
+    background-color: #000;
+    -webkit-box-shadow: 0px 2px 10px #000;
+    -webkit-border-radius: 10px;
+}
+
+.modal-menu-close {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+}
+
+.modal-menu .list-header {
+    border: 1px solid #333;
+    padding: 4px 9px;
+    -webkit-border-top-left-radius: 5px;
+    -webkit-border-top-right-radius: 5px;
+}
+
+.modal-menu .list-item {
+    border-color: #262626;
+    background-color: #111;
+}
+
+.modal-menu .list-item a {
+    color: #fff;
+}
+
+
+/* Menus ------------------------------------------------------------------ */
+
+.menu-wrapper {
+    width: 320px;
+    margin: 0 auto;
+}
+
+.menu {
+    padding: 16px 1px 4px 15px;
+}
+
+.menu:after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+}
+
+.menu a {
+    overflow: hidden;
+    display: block;
+    float: left;
+    margin: 0 14px 12px 0;
+    width: 62px;
+    height: 90px;
+    color: #999;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.menu img {
+    display: block;
+    width: 62px;
+    margin: 0 auto;
+}
+
+.menu .menu-item-label {
+    display: block;
+    margin-top: 2px;
+    font-size: 11px;
+    line-height: 13px;
+    text-align: center;
+}
+
+
+/* Tabs ------------------------------------------------------------------- */
+
+.tabs {
+    color: #fff;
+    font-size: 12px;
+    line-height: 13px;
+    text-align: center;
+    background-color: #360;
+}
+
+.tabs ul {
+    width: 310px;
+    height: 25px;
+    margin: 0 auto;
+    padding-top: 5px;
+}
+
+.tabs li {
+    display: block;
+    float: left;
+    width: 100px;
+    margin-left: 1px;
+    border: 1px solid #693;
+    background: #693;
+    -webkit-border-top-left-radius: 5px;
+    -webkit-border-top-right-radius: 5px;
+}
+
+.tabs li:first-child {
+    width: 102px;
+    margin-left: 0;
+}
+
+.tabs li.yah {
+    border-color: #fff;
+    background: #fff;
+}
+
+.tabs a {
+    display: block;
+    padding: 5px;
+    color: #fff;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.tabs li.yah a {
+    color: #000;
+}
+
+
+/* Buttons ---------------------------------------------------------------- */
+
+.button-bar {
+    padding: 10px 10px 1px;
+}
+
+.button-bar .button {
+    display: block;
+    margin-bottom: 9px;
+    border-width: 0 10px;
+    font-size: 20px;
+    line-height: 40px;
+    font-weight: bold;
+    text-shadow: #fff 0px 1px 1px;
+    -webkit-border-image: url(../images/iphone/buttons/white.png) 0 10 0 10;
+}
+
+.button-bar a.button,
+.button-bar span.button {
+    text-align: center;
+}
+
+.button-bar a.button {
+    color: #000;
+    text-decoration: none;
+}
+
+.button-bar input.button {
+    width: 100%;
+    padding: 0;
+    background: transparent;
+    -khtml-appearance: none;
+}
+
+.button-bar .delete-button.button,
+.button-bar .cancel-button.button {
+    color: #fff;
+    text-shadow: #000 0px -1px 1px;
+}
+
+.button-bar .delete-button.button {
+    -webkit-border-image: url(../images/iphone/buttons/red.png) 0 10 0 10;
+}
+
+.button-bar .cancel-button.button {
+    -webkit-border-image: url(../images/iphone/buttons/black.png) 0 10 0 10;
+}
+
+.button-bar .disabled-button.button {
+    color: #666;
+}
+
+.button-bar .two-up {
+    width: 300px;
+    margin: 0 auto;
+}
+
+.button-bar .two-up .button {
+    width: 125px;
+}
+
+.button-bar .two-up .left {
+    float: left;
+}
+
+.button-bar .two-up .right {
+    margin-left: 155px;
+}
+
+
+/* Messages --------------------------------------------------------------- */
+
+.message {
+    padding: 10px 10px 0;
+}
+
+.message-content {
+    padding: 9px 29px 4px;
+    border: 1px solid #ccc;
+    -webkit-border-radius: 5px;
+}
+
+.message-content p,
+.message-content li {
+    margin-bottom: 5px;
+}
+
+.message-content ul {
+    list-style-type: disc;
+    padding-left: 30px;
+}
+
+.success-message .message-content {
+    padding-left: 9px;
+    padding-right: 9px;
+    border-color: #cf9;
+    background: #cf9;
+}
+
+.error-message .message-content {
+    border-color: #fcc;
+    background: #fcc url(../images/iphone/status/error.png) no-repeat 5px 7px;
+}
+
+.warning-message .message-content {
+    border-color: #fcc;
+    background: #fcc url(../images/iphone/status/error.png) no-repeat 5px 7px;
+}
+
+
+/* Settings --------------------------------------------------------------- */
+
+.setting-group {
+    padding: 10px 10px 0;
+}
+
+.setting-header,
+.setting-note {
+    margin-bottom: 10px;
+    padding: 0 10px;
+    color: #4c566c;
+    text-shadow: #fff 0px 1px 1px;
+}
+
+.setting-header {
+    font-size: 17px;
+    line-height: 17px;
+    font-weight: bold;
+}
+
+.setting-note {
+    text-align: center;
+}
+
+.setting-header-mini {
+    margin: 10px 0 7px;
+    padding: 0 10px;
+    color: #4c566c;
+    font-weight: bold;
+    text-align: center;
+    text-shadow: #fff 0px 1px 1px;
+}
+
+.setting-highlight {
+    margin-bottom: 10px;
+    padding: 0 10px;
+    color: #4c566c;
+    font-size: 18px;
+    line-height: 18px;
+    text-align: center;
+}
+
+.setting-highlight a {
+    color: #360;
+}
+
+.settings {
+    margin-bottom: 5px;
+    border: 1px solid #b3b3b3;
+    background-color: #fff;
+    -webkit-border-radius: 10px;
+}
+
+.settings .setting {
+    border-top: 1px solid #b3b3b3;
+    padding: 9px;
+    font-size: 17px;
+    line-height: 23px;
+    clear: both;
+}
+
+.settings .setting:first-child {
+    border-top-width: 0;
+}
+
+.settings .setting-label {
+    width: 90px;
+    float: left;
+    font-weight: bold;
+}
+
+.settings .setting-field {
+    margin-left: 90px;
+    text-align: right;
+}
+
+.settings .text-setting .setting-field input,
+.settings .select-setting .setting-field select {
+    width: 180px;
+    border-color: #666;
+}
+
+.settings .text-setting .setting-field input {
+    padding: 2px;
+}
+
+.settings .text-setting .setting-label { width: 80px; }
+.settings .text-setting .setting-field { margin-left: 90px; }
+
+.settings .select-setting .setting-label { width: 80px; padding-top: 1px; }
+.settings .select-setting .setting-field { margin-left: 90px; }
+
+.settings .checkbox-setting .setting-label { width: 250px; }
+.settings .checkbox-setting .setting-field { margin-left: 260px; }
+
+
+/* Preview ---------------------------------------------------------------- */
+
+.preview {
+    padding: 10px 10px 0;
+    border-bottom: 1px solid #d9d9d9;
+}
+
+.preview h1, .preview h2, .preview h3,
+.preview h4, .preview h5, .preview h6,
+.preview p, .preview blockquote, .preview pre,
+.preview ul, .preview ol, .preview dl, .preview table {
+    margin-bottom: 10px;
+}
+
+.preview h1, .preview h2, .preview h3,
+.preview h4, .preview h5, .preview h6 {
+    font-weight: bold;
+}
+
+.preview blockquote {
+    margin-left: 15px;
+    border-left: 1px solid #ccc;
+    padding-left: 14px;
+}
+
+.preview pre, .preview code {
+    font-family: monospace;
+}
+
+.preview ul, .preview ol, .preview dd {
+    padding-left: 30px;
+}
+
+.preview ul { list-style-type: disc; }
+.preview ol { list-style-type: decimal; }
+
+
+/* Utilities -------------------------------------------------------------- */
+
+.hidden {
+    display: none;
+}

@@ -1,0 +1,26 @@
+<TMPL_INCLUDE NAME="header.tmpl">
+
+<div id="header">
+    <h1><MT_TRANS phrase="Preview"></h1>
+    <div class="home"><a href="<TMPL_VAR NAME=SCRIPT_BASE_URL>"><img src="<TMPL_VAR NAME=STATIC_URI>images/iphone/buttons/global/home.png" alt="<MT_TRANS phrase="Home">" width="30" height="26" /></a></div>
+    <div class="site"><a href="<TMPL_VAR NAME=BLOG_SITE_URL>" target="_blank"><img src="<TMPL_VAR NAME=STATIC_URI>images/iphone/buttons/global/site.png" alt="<MT_TRANS phrase="View site">" width="30" height="26" /></a></div>
+</div>
+<div id="content">
+    <div class="preview">
+        <TMPL_VAR NAME=PREVIEW_BODY>
+    </div>
+    <form method="post" action="<TMPL_VAR NAME=SCRIPT_URL>">
+        <input type="hidden" name="session_id" value="<TMPL_VAR NAME=SESSION_ID>" />
+        <input type="hidden" name="__mode" value="save_entry" />
+        <input type="hidden" name="magic_token" value="<TMPL_VAR NAME=MAGIC_TOKEN ESCAPE=HTML>" />
+        <TMPL_LOOP NAME=ENTRY_LOOP>
+            <input type="hidden" name="<TMPL_VAR NAME=DATA_NAME>" value="<TMPL_VAR NAME=DATA_VALUE ESCAPE=HTML>" />
+        </TMPL_LOOP>
+        <div class="button-bar">
+            <input type="submit" name="reedit" value="<MT_TRANS phrase="Edit">" class="button" />
+            <input type="submit" name="save" value="<MT_TRANS phrase="Save">" class="button" />
+        </div>
+    </form>
+</div>
+
+<TMPL_INCLUDE NAME="footer.tmpl">

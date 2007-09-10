@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="<TMPL_VAR NAME=LANGUAGE_ENCODING>"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+    "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title><TMPL_LOOP NAME=PAGE_TITLES><TMPL_VAR NAME=BC_NAME> | </TMPL_LOOP><TMPL_IF NAME=PORTAL_LABEL><TMPL_VAR NAME=PORTAL_LABEL ESCAPE=HTML><TMPL_ELSE><MT_TRANS phrase="TypePad"></TMPL_IF></title>
+    <meta http-equiv="content-type" content="text/html; charset=<TMPL_VAR NAME=LANGUAGE_ENCODING>" />
+    <meta name="viewport" content="maximum-scale=1.0,width=320,initial-scale=1.0" />
+    <link rel="stylesheet" href="<TMPL_VAR NAME=STATIC_URI>css/iphone.css" type="text/css" media="screen" />
+    <script type="text/javascript" src="<TMPL_VAR NAME=STATIC_URI>js/tc.js"></script>
+    <script type="text/javascript" src="<TMPL_VAR NAME=STATIC_URI>js/iphone.js"></script>
+</head>
+<body>

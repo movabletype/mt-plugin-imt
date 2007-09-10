@@ -1,0 +1,153 @@
+<TMPL_INCLUDE NAME="header.tmpl">
+
+<mt:if name="comment_pending">
+    <$mt:setvar name="comment_status" value="<__trans phrase="Moderated">"$>
+<mt:else>
+    <mt:if name="is_junk">
+        <$mt:setvar name="comment_status" value="<__trans phrase="Spam">"$>
+    <mt:else>
+        <$mt:setvar name="comment_status" value="<__trans phrase="Published">"$>
+    </mt:if>
+</mt:if>
+
+<div id="header">
+    <h1><MT_TRANS phrase="Edit Comment"></h1>
+    <div class="home"><a href="<TMPL_VAR NAME=SCRIPT_BASE_URL>"><img src="<TMPL_VAR NAME=STATIC_URI>images/iphone/buttons/global/home.png" alt="<MT_TRANS phrase="Home">" width="30" height="26" /></a></div>
+    <div class="site"><a href="<TMPL_VAR NAME=BLOG_SITE_URL>" target="_blank"><img src="<TMPL_VAR NAME=STATIC_URI>images/iphone/buttons/global/site.png" alt="<MT_TRANS phrase="View site">" width="30" height="26" /></a></div>
+</div>
+<div id="content">
+    <div class="tabs">
+        <ul>
+            <li><a href="<TMPL_VAR NAME=SCRIPT_URL>?blog_id=<TMPL_VAR NAME=BLOG_ID>"><MT_TRANS phrase="New Post"></a></li>
+            <li class="yah"><a href="<TMPL_VAR NAME=SCRIPT_URL>?__mode=list_comments&amp;blog_id=<TMPL_VAR NAME=BLOG_ID>"><MT_TRANS phrase="Comments"></a></li>
+            <li><a href="<TMPL_VAR NAME=SCRIPT_URL>?__mode=list_entries&amp;blog_id=<TMPL_VAR NAME=BLOG_ID>"><MT_TRANS phrase="Posts"></a></li>
+        </ul>
+    </div>
+    <TMPL_IF NAME=SAVED>
+        <div class="success-message message">
+            <div class="message-content">
+                <p><MT_TRANS phrase="Your changes to the comment have been made and have been published to your site."></p>
+            </div>
+        </div>
+    </TMPL_IF>
+    <div class="editor">
+        <div class="text-field meta-field field">
+            <div class="field-name">
+                <div class="field-name-inner">
+                    <MT_TRANS phrase="Comment:">
+                </div>
+            </div>
+            <div class="field-value">
+                <div class="field-value-inner">
+                    <TMPL_VAR NAME=TEXT ESCAPE=HTML>
+                </div>
+            </div>
+        </div>
+        <TMPL_IF NAME=CREATED_ON_FORMATTED>
+            <div class="created_on-field meta-field field">
+                <div class="field-name">
+                    <div class="field-name-inner">
+                        <MT_TRANS phrase="Posted:">
+                    </div>
+                </div>
+                <div class="field-value">
+                    <div class="field-value-inner">
+                        <TMPL_VAR NAME=CREATED_ON_FORMATTED>
+                    </div>
+                </div>
+            </div>
+        </TMPL_IF>
+        <TMPL_IF NAME=AUTHOR>
+            <div class="author-field meta-field field">
+                <div class="field-name">
+                    <div class="field-name-inner">
+                        <MT_TRANS phrase="Author:">
+                    </div>
+                </div>
+                <div class="field-value">
+                    <div class="field-value-inner">
+                        <TMPL_VAR NAME=AUTHOR ESCAPE=HTML>
+                    </div>
+                </div>
+            </div>
+        </TMPL_IF>
+        <TMPL_IF NAME=EMAIL>
+            <div class="email-field meta-field field">
+                <div class="field-name">
+                    <div class="field-name-inner">
+                        <MT_TRANS phrase="Email:">
+                    </div>
+                </div>
+                <div class="field-value">
+                    <div class="field-value-inner">
+                        <a href="mailto:<TMPL_VAR NAME=COMMENT_EMAIL ESCAPE=HTML>"><TMPL_VAR NAME=EMAIL ESCAPE=HTML></a>
+                    </div>
+                </div>
+            </div>
+        </TMPL_IF>
+        <TMPL_IF NAME=URL>
+            <div class="url-field meta-field field">
+                <div class="field-name">
+                    <div class="field-name-inner">
+                        <MT_TRANS phrase="URL:">
+                    </div>
+                </div>
+                <div class="field-value">
+                    <div class="field-value-inner">
+                        <a href="<TMPL_VAR NAME=COMMENT_URL ESCAPE=HTML>"><TMPL_VAR NAME=URL ESCAPE=HTML></a>
+                    </div>
+                </div>
+            </div>
+        </TMPL_IF>
+        <TMPL_IF NAME=IP>
+            <div class="ip-field meta-field field">
+                <div class="field-name">
+                    <div class="field-name-inner">
+                        <MT_TRANS phrase="IP Address:">
+                    </div>
+                </div>
+                <div class="field-value">
+                    <div class="field-value-inner">
+                        <TMPL_VAR NAME=IP ESCAPE=HTML>
+                    </div>
+                </div>
+            </div>
+        </TMPL_IF>
+        <TMPL_IF NAME=COMMENT_STATUS>
+            <div class="status-field meta-field field">
+                <div class="field-name">
+                    <div class="field-name-inner">
+                        <MT_TRANS phrase="Status:">
+                    </div>
+                </div>
+                <div class="field-value">
+                    <div class="field-value-inner">
+                        <TMPL_VAR NAME=COMMENT_STATUS>
+                    </div>
+                </div>
+            </div>
+        </TMPL_IF>
+        <div class="button-bar">
+            <TMPL_UNLESS NAME=VISIBLE>
+                <a href="#" onclick="return publishComment()" class="button"><MT_TRANS phrase="Publish"></a>
+            <TMPL_ELSE>
+                <a href="#" onclick="return unpublishComment()" class="button"><MT_TRANS phrase="Unpublish"></a>
+            </TMPL_UNLESS>
+            <a href="#" onclick="return deleteComment( 'delete', '<MT_TRANS phrase="Are you sure you want to permanently delete this comment?" escape="js">' )" class="delete-button button"><MT_TRANS phrase="Delete"></a>
+            <a href="#" onclick="return deleteComment( 'junk', '<MT_TRANS phrase="Are you sure you want to report this as spam?" escape="js">' )" class="delete-button button"><MT_TRANS phrase="Report Spam"></a>
+        </div>
+    </div>
+</div>
+
+<form id="hidden-form" action="<TMPL_VAR NAME=SCRIPT_URL>" method="post">
+    <input type="hidden" name="__mode" value="set_comment_status" />
+    <input type="hidden" name="id" value="<TMPL_VAR NAME=ID>" />
+    <input type="hidden" name="blog_id" value="<TMPL_VAR NAME=BLOG_ID>" />
+    <input type="hidden" name="status" value="" />
+    <input type="hidden" name="from" value="" />
+    <input type="hidden" name="to" value="" />
+    <input type="hidden" name="magic_token" value="<TMPL_VAR NAME=MAGIC_TOKEN ESCAPE=HTML>" />
+    <input type="hidden" name="session_id" value="<TMPL_VAR NAME=SESSION_ID>" />
+</form>
+
+<TMPL_INCLUDE NAME="footer.tmpl">

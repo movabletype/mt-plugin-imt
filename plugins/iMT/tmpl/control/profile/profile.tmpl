@@ -1,0 +1,9 @@
+<TMPL_INCLUDE NAME="header.tmpl">
+
+<ul>
+<TMPL_IF NAME=USER_HAS_CONTROL_PROFILE_MOBILE>
+<li><a href="<TMPL_VAR NAME=SCRIPT_URL>?__mode=mobile"><MT_TRANS phrase="Mobile Settings"></a></li>
+</TMPL_IF>
+</ul>
+
+<TMPL_INCLUDE NAME="footer.tmpl">

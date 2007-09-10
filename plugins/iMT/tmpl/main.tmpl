@@ -1,0 +1,125 @@
+<TMPL_INCLUDE NAME="header.tmpl">
+
+<script type="text/javascript">
+<!--
+function chooseWeblog( url, id )
+{
+<TMPL_IF NAME=BLOGS>
+    var weblogs = [];
+<TMPL_LOOP NAME=BLOGS>
+    weblogs.push( { id: <TMPL_VAR NAME=BLOG_ID>, name: '<TMPL_VAR NAME=BLOG_NAME ESCAPE=JS>' } );
+</TMPL_LOOP>
+    if( weblogs.length == 1 )
+        window.location = url + '&blog_id=' + weblogs[0].id;
+    else
+        revealWeblogs( id );
+</TMPL_IF>
+    return false;
+}
+// -->
+</script>
+
+<div class="page-main">
+
+<div id="header">
+    <h1><TMPL_IF NAME=PORTAL_LABEL><TMPL_VAR NAME=PORTAL_LABEL ESCAPE=HTML><TMPL_ELSE><MT_TRANS phrase="TypePad"></TMPL_IF></h1>
+</div>
+<div id="content">
+    <TMPL_IF NAME=USER_HAS_WEBLOG>
+        <TMPL_UNLESS NAME=BLOGS>
+            <p class="none"><MT_TRANS phrase="You currently do not have any blogs."></p>
+        </TMPL_UNLESS>
+    </TMPL_IF>
+    <div class="menu-wrapper">
+        <ul class="menu">
+            <TMPL_IF NAME=USER_HAS_WEBLOG>
+                <TMPL_IF NAME=BLOGS>
+                    <TMPL_LOOP NAME=BLOGS></TMPL_LOOP>
+                    <li class="menu-item">
+                        <a href="<TMPL_VAR NAME=SCRIPT_URL>?__mode=edit_entry" onclick="return chooseWeblog( this.href, 'new-post-menu' )">
+                            <img src="<TMPL_VAR NAME=STATIC_URI>images/iphone/buttons/home/create_post.png" alt="<MT_TRANS phrase="New Entry">" width="62" height="62" class="menu-item-icon" />
+                            <span class="menu-item-label"><MT_TRANS phrase="New Entry"></span>
+                        </a>
+                    </li>
+                    <li class="menu-item">
+                        <a href="<TMPL_VAR NAME=SCRIPT_URL>?__mode=list_comments" onclick="return chooseWeblog( this.href, 'edit-comments-menu' )">
+                            <img src="<TMPL_VAR NAME=STATIC_URI>images/iphone/buttons/home/list_comments.png" alt="<MT_TRANS phrase="Manage Comments">" width="62" height="62" class="menu-item-icon" />
+                            <span class="menu-item-label"><MT_TRANS phrase="Manage Comments"></span>
+                        </a>
+                    </li>
+                    <li class="menu-item">
+                        <a href="<TMPL_VAR NAME=SCRIPT_URL>?__mode=list_entries" onclick="return chooseWeblog( this.href, 'list-posts-menu' )">
+                            <img src="<TMPL_VAR NAME=STATIC_URI>images/iphone/buttons/home/list_posts.png" alt="<MT_TRANS phrase="Manage Entries">" width="62" height="62" class="menu-item-icon" />
+                            <span class="menu-item-label"><MT_TRANS phrase="Manage Entries"></span>
+                        </a>
+                    </li>
+                </TMPL_IF>
+            </TMPL_IF>
+        </ul>
+    </div>
+    <TMPL_IF NAME=USER_HAS_WEBLOG>
+        <TMPL_IF NAME=BLOGS>
+            <div id="new-post-menu" class="modal-menu hidden">
+                <div class="modal-menu-list">
+                    <h2 class="list-header"><MT_TRANS phrase="Select a blog"></h2>
+                    <ul class="list">
+                        <TMPL_LOOP NAME=BLOGS>
+                            <li class="list-item">
+                                <a href="<TMPL_VAR NAME=SCRIPT_URL>?__mode=view&amp;_type=entry&amp;blog_id=<TMPL_VAR NAME=BLOG_ID>">
+                                    <span class="list-item-inner">
+                                        <span class="list-item-label"><TMPL_VAR NAME=BLOG_NAME ESCAPE=HTML></span>
+                                    </span>
+                                </a>
+                            </li>
+                        </TMPL_LOOP>
+                    </ul>
+                </div>
+                <div class="modal-menu-close">
+                    <a href="#" onclick="return concealWeblogs( 'new-post-menu' )"><img src="<TMPL_VAR NAME=STATIC_URI>images/iphone/buttons/close.png" alt="<MT_TRANS phrase="Close">" width="30" height="30" /></a>
+                </div>
+            </div>
+            <div id="list-posts-menu" class="modal-menu hidden">
+                <div class="modal-menu-list">
+                    <h2 class="list-header"><MT_TRANS phrase="Select a blog"></h2>
+                    <ul class="list">
+                        <TMPL_LOOP NAME=BLOGS>
+                            <li class="list-item">
+                                <a href="<TMPL_VAR NAME=SCRIPT_URL>?__mode=list_entries&amp;blog_id=<TMPL_VAR NAME=BLOG_ID>">
+                                    <span class="list-item-inner">
+                                        <span class="list-item-label"><TMPL_VAR NAME=BLOG_NAME ESCAPE=HTML></span>
+                                    </span>
+                                </a>
+                            </li>
+                        </TMPL_LOOP>
+                    </ul>
+                </div>
+                <div class="modal-menu-close">
+                    <a href="#" onclick="return concealWeblogs( 'list-posts-menu' )"><img src="<TMPL_VAR NAME=STATIC_URI>images/iphone/buttons/close.png" alt="<MT_TRANS phrase="Close">" width="30" height="30" /></a>
+                </div>
+            </div>
+            <div id="edit-comments-menu" class="modal-menu hidden">
+                <div class="modal-menu-list">
+                    <h2 class="list-header"><MT_TRANS phrase="Select a blog"></h2>
+                    <ul class="list">
+                        <TMPL_LOOP NAME=BLOGS>
+                            <li class="list-item">
+                                <a href="<TMPL_VAR NAME=SCRIPT_URL>?__mode=list_comments&amp;blog_id=<TMPL_VAR NAME=BLOG_ID>">
+                                    <span class="list-item-inner">
+                                        <span class="list-item-label"><TMPL_VAR NAME=BLOG_NAME ESCAPE=HTML></span>
+                                    </span>
+                                </a>
+                            </li>
+                        </TMPL_LOOP>
+                    </ul>
+                </div>
+                <div class="modal-menu-close">
+                    <a href="#" onclick="return concealWeblogs( 'edit-comments-menu' )"><img src="<TMPL_VAR NAME=STATIC_URI>images/iphone/buttons/close.png" alt="<MT_TRANS phrase="Close">" width="30" height="30" /></a>
+                </div>
+            </div>
+        </TMPL_IF>
+    </TMPL_IF>
+</div>
+
+</div>
+
+<TMPL_INCLUDE NAME="footer.tmpl">
