@@ -42,9 +42,9 @@ body, input, select, textarea {
 
 #header {
     position: relative;
-    border-bottom: 1px solid #693;
+    border-bottom: 1px solid #25688c;
     padding: 5px 40px 4px;
-    background: #9c6 url(../images/iphone/backgrounds/header.png) repeat-x left center;
+    background: #589bbf url(../images/iphone/backgrounds/header.png) repeat-x left center;
 }
 
 #header h1 {
@@ -53,7 +53,7 @@ body, input, select, textarea {
     font-weight: bold;
     color: #fff;
     text-align: center;
-    text-shadow: #693 0px -1px 1px;
+    text-shadow: #25688c 0px -1px 1px;
 }
 
 #header .home {
@@ -404,7 +404,7 @@ body, input, select, textarea {
     font-size: 12px;
     line-height: 13px;
     text-align: center;
-    background-color: #360;
+    background-color: #023559;
 }
 
 .tabs ul {
@@ -419,8 +419,8 @@ body, input, select, textarea {
     float: left;
     width: 100px;
     margin-left: 1px;
-    border: 1px solid #693;
-    background: #693;
+    border: 1px solid #25688c;
+    background: #25688c;
     -webkit-border-top-left-radius: 5px;
     -webkit-border-top-right-radius: 5px;
 }
@@ -601,7 +601,7 @@ body, input, select, textarea {
 }
 
 .setting-highlight a {
-    color: #360;
+    color: #023559;
 }
 
 .settings {
