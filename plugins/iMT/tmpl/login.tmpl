@@ -14,6 +14,7 @@
         </div>
     </TMPL_IF>
     <form name="login_form" method="post" action="<TMPL_VAR NAME=SCRIPT_URL>">
+        <input type="hidden" name="remember" value="1" />
         <div class="login-fields">
             <div>
                 <div><label for="username"><MT_TRANS phrase="Member Name"></label></div>
