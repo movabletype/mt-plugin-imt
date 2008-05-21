@@ -17,63 +17,45 @@ setTimeout('doRedirect()', 200);
     <h1><MT_TRANS phrase="Publishing"></h1>
 </div>
 <div id="content">
-
+    <div class="rebuild-message message">
+        <div class="message-content">
+            <div><img src="<TMPL_VAR NAME=STATIC_URI>images/iphone/spinner.gif" alt="<MT_TRANS phrase="Publishing">" width="15" height="15" /></div>
 <mt:if name="is_one_index">
-    <div class="success-message message">
-        <div class="message-content">
             <p><__trans phrase="Publishing [_1]..." params="<mt:var name="build_type_name" escape="html"> "></p>
-        </div>
-    </div>
 <mt:else>
-<mt:if name="is_individual">
-    <div class="success-message message">
-        <div class="message-content">
+    <mt:if name="is_individual">
             <p><__trans phrase="Publishing [_1] [_2]..." params="<mt:var name="build_type_name">%%<mt:var name="indiv_range"> "></p>
+    <mt:else>
+        <mt:if name="is_entry">
+            <mt:if name="dynamic">
+            <p><__trans phrase="Publishing [_1] dynamic links..." params="<mt:var name="build_type_name" escape="html"> "></p>
+            <mt:else>
+            <p><__trans phrase="Publishing [_1]..." params="<mt:var name="build_type_name" escape="html"> "></p>
+            </mt:if>
+        <mt:else>
+            <mt:if name="dynamic">
+            <p><__trans phrase="Publishing [_1] dynamic links..." params="<mt:var name="build_type_name" escape="html"> "></p>
+            <mt:else>
+                <mt:if name="build_type_name">
+                    <mt:if name="archives">
+            <p><__trans phrase="Publishing [_1] archives..." params="<mt:var name="build_type_name" escape="html"> "></p>
+                    <mt:else>
+            <p><__trans phrase="Publishing [_1] templates..." params="<mt:var name="build_type_name" escape="html"> "></p>
+                    </mt:if>
+                <mt:else>
+            <p><__trans phrase="Publishing..."></p>
+                </mt:if>
+            </mt:if>
+        </mt:if>
+    </mt:if>
+</mt:if>
         </div>
     </div>
-<mt:else>
-<mt:if name="is_entry">
-<mt:if name="dynamic">
-    <div class="message-content">
-        <p><__trans phrase="Publishing [_1] dynamic links..." params="<mt:var name="build_type_name" escape="html"> "></p>
-    </div>
-<mt:else>
-    <div class="message-content">
-        <p><__trans phrase="Publishing [_1]..." params="<mt:var name="build_type_name" escape="html"> "></p>
-    </div>
-</mt:if>
-<mt:else>
-<mt:if name="dynamic">
-    <div class="message-content">
-        <p><__trans phrase="Publishing [_1] dynamic links..." params="<mt:var name="build_type_name" escape="html"> "></p>
-    </div>
-<mt:else>
-<mt:if name="build_type_name">
-<mt:if name="archives">
-    <div class="message-content">
-        <p><__trans phrase="Publishing [_1] archives..." params="<mt:var name="build_type_name" escape="html"> "></p>
-    </div>
-<mt:else>
-    <div class="message-content">
-        <p><__trans phrase="Publishing [_1] templates..." params="<mt:var name="build_type_name" escape="html"> "></p>
-    </div>
-</mt:if>
-<mt:else>
-<div class="message-content">
-    <p><__trans phrase="Publishing..."></p>
-</div>
-</mt:if>
-</mt:if>
-</mt:if>
-</mt:if>
-</mt:if>
-
 <mt:if name="total">
-<div class="progress-bar<mt:unless name="complete"> progress-bar-indeterminate<mt:else>" style="background-position: <mt:var name="incomplete">% 0</mt:unless>">
-    <span><$mt:var name="complete"$>% Complete</span>&nbsp;
-</div>
+    <div class="progress-bar<mt:unless name="complete"> progress-bar-indeterminate<mt:else>" style="background-position: <mt:var name="incomplete">% 0</mt:unless>">
+        <span><$mt:var name="complete"$>% Complete</span>&nbsp;
+    </div>
 </mt:if>
-
 </div>
 
 <mt:include name="footer.tmpl">

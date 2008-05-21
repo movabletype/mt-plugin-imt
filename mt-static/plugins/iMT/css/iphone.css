@@ -84,7 +84,7 @@ body, input, select, textarea {
 
 .page-login #content,
 .page-main #content {
-    background: #0d0d0d url(../images/iphone/backgrounds/content.png) repeat-x left top;
+    background: #141414 url(../images/iphone/backgrounds/content.png) repeat-x left top;
 }
 
 
@@ -192,12 +192,16 @@ body, input, select, textarea {
     padding: 10px 0 0 10px;
 }
 
-.editor .content-field .field-value-inner {
+.editor .field-value-inner {
     padding: 10px;
 }
 
 .editor .meta-field .field-value-inner {
-    padding: 10px 10px 10px 0;
+    padding-left: 0;
+}
+
+.editor .field-value-content {
+    overflow: hidden;
 }
 
 .editor #title,
@@ -273,13 +277,31 @@ a .li-status {
                 url(../images/iphone/status/published.png) no-repeat center left;
 }
 
-.item-draft .li-status,
+.item-draft .li-status {
+    padding-left: 22px;
+    background: url(../images/iphone/status/draft.png) no-repeat center left;
+}
+
+.item-draft a .li-status {
+    background: url(../images/iphone/arrow.png) no-repeat center right,
+                url(../images/iphone/status/draft.png) no-repeat center left;
+}
+
+.item-future .li-status {
+    padding-left: 22px;
+    background: url(../images/iphone/status/future.png) no-repeat center left;
+}
+
+.item-future a .li-status {
+    background: url(../images/iphone/arrow.png) no-repeat center right,
+                url(../images/iphone/status/future.png) no-repeat center left;
+}
+
 .item-moderated .li-status {
     padding-left: 22px;
     background: url(../images/iphone/status/moderated.png) no-repeat center left;
 }
 
-.item-draft a .li-status,
 .item-moderated a .li-status {
     background: url(../images/iphone/arrow.png) no-repeat center right,
                 url(../images/iphone/status/moderated.png) no-repeat center left;
@@ -571,6 +593,22 @@ a .li-status {
     padding-left: 9px;
     border-color: #ccc;
     background: #ccc;
+}
+
+.rebuild-message .message-content {
+    text-align: center;
+    padding: 30px 10px 5px;
+    border-width: 0;
+}
+
+.rebuild-message .message-content p,
+.rebuild-message .message-content ul {
+    margin-top: 10px;
+    color: #666;
+}
+
+.rebuild-message .message-content ul {
+    text-align: left;
 }
 
 
