@@ -7,12 +7,12 @@ body {
     -webkit-text-size-adjust: none;
 }
 
-html, body, div,
-ul, ol, li, dl, dt, dd,
-form, fieldset, input, select, textarea,
+html, body, div, p, hr,
 h1, h2, h3, h4, h5, h6,
-pre, code, p, blockquote, hr,
-th, td {
+ul, ol, li, dl, dt, dd,
+blockquote, pre, th, td,
+form, fieldset, input,
+select, textarea {
     margin: 0;
     padding: 0;
 }
@@ -22,13 +22,9 @@ h1, h2, h3, h4, h5, h6 {
     font-weight: normal;
 }
 
-ol, ul {
-    list-style: none;
-}
+ol, ul { list-style: none; }
 
-a img {
-    border: 0;
-}
+a img { border: 0; }
 
 
 /* General ---------------------------------------------------------------- */
@@ -49,36 +45,31 @@ body, input, select, textarea {
 
 #header h1 {
     overflow: hidden;
-    height: 30px;
     color: #fff;
     font-size: 20px;
     line-height: 30px;
     font-weight: bold;
     text-align: center;
     text-shadow: #25688c 0px -1px 1px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
 
-#header .home {
-    position: absolute;
-    overflow: hidden;
-    top: 7px;
-    left: 5px;
-    width: 30px;
-    height: 26px;
-}
-
+#header .home,
 #header .site {
     position: absolute;
     overflow: hidden;
     top: 7px;
-    right: 5px;
     width: 30px;
     height: 26px;
 }
 
+#header .home { left: 5px; }
+#header .site { right: 5px; }
+
 #header .home a,
-#header .home img,
 #header .site a,
+#header .home img,
 #header .site img {
     display: block;
 }
@@ -94,10 +85,6 @@ body, input, select, textarea {
 .page-login #content,
 .page-main #content {
     background: #0d0d0d url(../images/iphone/backgrounds/content.png) repeat-x left top;
-}
-
-.page-mobile #content {
-    background: #c5ccd3;
 }
 
 
@@ -183,7 +170,6 @@ body, input, select, textarea {
 }
 
 .editor .meta-field .field-name {
-    width: 90px;
     float: left;
     color: #666;
 }
@@ -192,44 +178,26 @@ body, input, select, textarea {
     display: none;
 }
 
-.editor .title-field .field-name {
-    width: 50px;
-}
+.editor .meta-field .field-name     { width: 90px; }
+.editor .title-field .field-name    { width: 50px; }
+.editor .tags-field .field-name     { width: 50px; }
+.editor .category-field .field-name { width: 75px; }
 
-.editor .tags-field .field-name {
-    width: 50px;
-}
-
-.editor .category-field .field-name {
-    width: 75px;
-}
-
-.editor .meta-field .field-value {
-    margin-left: 90px;
-}
-
-.editor .title-field .field-value {
-    margin-left: 50px;
-}
-
-.editor .tags-field .field-value {
-    margin-left: 50px;
-}
-
-.editor .category-field .field-value {
-    margin-left: 75px;
-}
+.editor .meta-field .field-value     { margin-left: 90px; }
+.editor .title-field .field-value    { margin-left: 50px; }
+.editor .tags-field .field-value     { margin-left: 50px; }
+.editor .category-field .field-value { margin-left: 75px; }
 
 .editor .meta-field .field-name-inner {
     padding: 10px 0 0 10px;
 }
 
-.editor .meta-field .field-value-inner {
-    padding: 10px 10px 10px 0;
-}
-
 .editor .content-field .field-value-inner {
     padding: 10px;
+}
+
+.editor .meta-field .field-value-inner {
+    padding: 10px 10px 10px 0;
 }
 
 .editor #title,
@@ -321,18 +289,19 @@ a .li-status {
 .li-details {
     display: block;
     overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
 
 .li-label {
-    height: 23px;
     font-size: 20px;
     line-height: 23px;
     font-weight: bold;
 }
 
 .li-details {
-    height: 14px;
     margin-top: 1px;
+    color: #666;
     font-size: 12px;
     line-height: 14px;
 }
@@ -520,7 +489,11 @@ a .li-status {
     -khtml-appearance: none;
 }
 
-.button-bar .delete-button.button,
+.button-bar .delete-button.button {
+    color: #fff;
+    text-shadow: #600 0px -1px 1px;
+}
+
 .button-bar .cancel-button.button {
     color: #fff;
     text-shadow: #000 0px -1px 1px;
@@ -563,7 +536,7 @@ a .li-status {
 }
 
 .message-content {
-    padding: 9px 29px 4px;
+    padding: 9px 9px 4px 29px;
     border: 1px solid #ccc;
     -webkit-border-radius: 5px;
 }
@@ -580,7 +553,6 @@ a .li-status {
 
 .success-message .message-content {
     padding-left: 9px;
-    padding-right: 9px;
     border-color: #cf9;
     background: #cf9;
 }
@@ -597,7 +569,6 @@ a .li-status {
 
 .zerostate-message .message-content {
     padding-left: 9px;
-    padding-right: 9px;
     border-color: #ccc;
     background: #ccc;
 }
