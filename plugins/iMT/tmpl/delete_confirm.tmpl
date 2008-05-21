@@ -22,26 +22,26 @@
         </TMPL_LOOP>
         <div class="warning-message message">
             <div class="message-content">
-                <p>
-                    <TMPL_IF NAME=TYPE_COMMENT><MT_TRANS phrase="You've indicated that you would like to delete the comment(s):"></TMPL_IF>
-                    <TMPL_IF NAME=TYPE_PING><MT_TRANS phrase="You've indicated that you would like to delete the ping(s):"></TMPL_IF>
-                    <TMPL_IF NAME=TYPE_PING_CAT><MT_TRANS phrase="You've indicated that you would like to delete the ping(s):"></TMPL_IF>
-                    <TMPL_IF NAME=TYPE_ENTRY><MT_TRANS phrase="You've indicated that you would like to delete the post/posts:"></TMPL_IF>
-                    <TMPL_IF NAME=TYPE_TEMPLATE><MT_TRANS phrase="You've indicated that you would like to delete the template(s):"></TMPL_IF>
-                    <TMPL_IF NAME=TYPE_TEMPLATESET><MT_TRANS phrase="You've indicated that you would like to delete the template set(s):"></TMPL_IF>
-                    <TMPL_IF NAME=TYPE_CATEGORY><MT_TRANS phrase="You've indicated that you would like to delete the following category/categories. When you delete a category, all entries assigned to that category will be unassigned from that category."></TMPL_IF>
-                    <TMPL_IF NAME=TYPE_TEMPLATEMAP><MT_TRANS phrase="You've indicated that you would like to delete the following template(s) from the particular archive type(s):"></TMPL_IF>
-                    <TMPL_IF NAME=TYPE_PERMISSION><MT_TRANS phrase="You've indicated that you would like to delete the following author(s) from your weblog:"></TMPL_IF>
-                    <TMPL_IF NAME=TYPE_INVITE><MT_TRANS phrase="You've indicated that you would like to delete the following invitation(s):"></TMPL_IF>
-                    <TMPL_IF NAME=TYPE_BLOG><MT_TRANS phrase="You've indicated that you would like to delete the following weblog(s). When you delete a weblog, all of the entries, comments, and author permissions are deleted along with the weblog itself, along with the published archives."></TMPL_IF>
-                </p>
-                <ul>
-                    <TMPL_LOOP NAME=NAMES>
-                        <TMPL_IF NAME=NAME>
-                            <li><TMPL_VAR NAME=NAME ESCAPE=HTML></li>
-                        </TMPL_IF>
-                    </TMPL_LOOP>
-                </ul>
+                <TMPL_IF NAME=TYPE_COMMENT><p><MT_TRANS phrase="You've indicated that you would like to delete the comment(s):"></p></TMPL_IF>
+                <TMPL_IF NAME=TYPE_PING><p><MT_TRANS phrase="You've indicated that you would like to delete the ping(s):"></p></TMPL_IF>
+                <TMPL_IF NAME=TYPE_PING_CAT><p><MT_TRANS phrase="You've indicated that you would like to delete the ping(s):"></p></TMPL_IF>
+                <TMPL_IF NAME=TYPE_ENTRY><p><MT_TRANS phrase="You've indicated that you would like to delete the post/posts:"></p></TMPL_IF>
+                <TMPL_IF NAME=TYPE_TEMPLATE><p><MT_TRANS phrase="You've indicated that you would like to delete the template(s):"></p></TMPL_IF>
+                <TMPL_IF NAME=TYPE_TEMPLATESET><p><MT_TRANS phrase="You've indicated that you would like to delete the template set(s):"></p></TMPL_IF>
+                <TMPL_IF NAME=TYPE_CATEGORY><p><MT_TRANS phrase="You've indicated that you would like to delete the following category/categories. When you delete a category, all entries assigned to that category will be unassigned from that category."></p></TMPL_IF>
+                <TMPL_IF NAME=TYPE_TEMPLATEMAP><p><MT_TRANS phrase="You've indicated that you would like to delete the following template(s) from the particular archive type(s):"></p></TMPL_IF>
+                <TMPL_IF NAME=TYPE_PERMISSION><p><MT_TRANS phrase="You've indicated that you would like to delete the following author(s) from your weblog:"></p></TMPL_IF>
+                <TMPL_IF NAME=TYPE_INVITE><p><MT_TRANS phrase="You've indicated that you would like to delete the following invitation(s):"></p></TMPL_IF>
+                <TMPL_IF NAME=TYPE_BLOG><p><MT_TRANS phrase="You've indicated that you would like to delete the following weblog(s). When you delete a weblog, all of the entries, comments, and author permissions are deleted along with the weblog itself, along with the published archives."></p></TMPL_IF>
+                <TMPL_IF NAME=NAMES>
+                    <ul>
+                        <TMPL_LOOP NAME=NAMES>
+                            <TMPL_IF NAME=NAME>
+                                <li><TMPL_VAR NAME=NAME ESCAPE=HTML></li>
+                            </TMPL_IF>
+                        </TMPL_LOOP>
+                    </ul>
+                </TMPL_IF>
                 <p>
                     <MT_TRANS phrase="This change can not be undone.">
                     <MT_TRANS phrase="Are you sure you want to delete these items?">
