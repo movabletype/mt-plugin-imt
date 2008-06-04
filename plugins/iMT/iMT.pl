@@ -99,7 +99,7 @@ sub iphone_view {
         return iphone_edit_entry($app, @_);
     }
     else {
-        return $app->edit_object(@_);
+        return undef;
     }
 }
 
