@@ -1,0 +1,17 @@
+# version control
+.gitignore
+\bCVS
+(^|/)\.
+~$
+
+# CPAN chain files
+^MANIFEST
+^Makefile
+^META.yml$
+^blib/
+^pm_to_blib$
+
+# packages
+\.zip$
+\.tar\.gz$
+

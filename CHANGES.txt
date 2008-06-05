@@ -1,0 +1,12 @@
+# Version 1.02 - June 4, 2008
+
+* Fix for MT 4.2
+
+# Version 1.01 - September 10, 2008
+
+* Support for Opera Mini.
+
+# Version 1.0 - September 10, 2008
+
+* Initial release.
+

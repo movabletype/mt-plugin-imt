@@ -10,7 +10,7 @@ use MT 4;
 use base qw( MT::Plugin );
 
 my $enabled = 0;
-our $VERSION = '1.01';
+our $VERSION = '1.02';
 my $plugin = __PACKAGE__->new({
     name        => "iPhone / iPod touch UI Support",
     author_name => "<a href='http://www.iwalt.com/'>Walt Dickinson</a>, <a href='http://bradchoate.com/'>Brad Choate</a>",

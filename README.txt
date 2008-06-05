@@ -1,5 +1,5 @@
 iMT, a Plugin for Movable Type
-Version 1.0
+Version 1.02
 
 This plugin will provide a more natural user interface for Apple's iPhone
 and iPod touch products.
