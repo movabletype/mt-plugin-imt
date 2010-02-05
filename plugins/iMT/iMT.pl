@@ -76,9 +76,11 @@ sub init_request {
         # be using our AppleWebKit mobile interface.
         # Using keyword detection provided by Apple:
         #    http://trac.webkit.org/projects/webkit/wiki/DetectingWebKit
+        # Adjusted 'Mobile/' to 'Mobile[ /]' to match for Nexus One which
+        # supplies no device identifier following the 'Mobile' keyword
         if (my $ua = $ENV{HTTP_USER_AGENT}) {
-            if ((( $ua =~ m!AppleWebKit/! ) && ( $ua =~ m!Mobile/! )) ||
-                 ( $ua =~ m!Opera Mini/!)) {
+            if ((($ua =~ m!AppleWebKit/!) && ($ua =~ m!Mobile[ /]!)) ||
+                 ($ua =~ m!Opera Mini/!)) {
                 $enabled = 1;
 
                 # Redirect 'dashboard' or 'default' modes to iphone_main
