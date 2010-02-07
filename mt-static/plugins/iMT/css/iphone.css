@@ -1,4 +1,4 @@
-/* iMT Styles ============================================================= */
+/* Common Web App Styles ================================================== */
 
 /* Reset ------------------------------------------------------------------ */
 
@@ -12,7 +12,7 @@ h1, h2, h3, h4, h5, h6,
 ul, ol, li, dl, dt, dd,
 blockquote, pre, th, td,
 form, fieldset, input,
-select, textarea {
+button, select, textarea {
     margin: 0;
     padding: 0;
 }
@@ -22,14 +22,14 @@ h1, h2, h3, h4, h5, h6 {
     font-weight: normal;
 }
 
-ol, ul { list-style: none; }
+ol, ul { list-style-type: none; }
 
 a img { border: 0; }
 
 
 /* General ---------------------------------------------------------------- */
 
-body, input, select, textarea {
+body, input, button, select, textarea {
     font: 14px Helvetica, sans-serif;
 }
 
@@ -38,9 +38,9 @@ body, input, select, textarea {
 
 #header {
     position: relative;
-    border-bottom: 1px solid #25688c;
+    border-bottom: 1px solid #666;
     padding: 5px 40px 4px;
-    background: #589bbf url(../images/iphone/backgrounds/header.png) repeat-x left center;
+    background: #999 url(../images/iphone/backgrounds/header.png) repeat-x left center;
 }
 
 #header h1 {
@@ -50,9 +50,14 @@ body, input, select, textarea {
     line-height: 30px;
     font-weight: bold;
     text-align: center;
-    text-shadow: #25688c 0px -1px 1px;
+    text-shadow: #666 0px -1px 1px;
     white-space: nowrap;
     text-overflow: ellipsis;
+}
+
+#header h1 a {
+    color: #fff;
+    text-decoration: none;
 }
 
 #header .home,
@@ -123,6 +128,7 @@ body, input, select, textarea {
 #footer .logout img {
     display: block;
 }
+
 
 /* Login ------------------------------------------------------------------ */
 
@@ -396,7 +402,7 @@ a .li-status {
 }
 
 .menu li {
-   display: block
+    display: block;
 }
 
 .menu a {
@@ -437,7 +443,7 @@ a .li-status {
     font-size: 12px;
     line-height: 13px;
     text-align: center;
-    background-color: #023559;
+    background-color: #333;
 }
 
 .tabs ul {
@@ -452,8 +458,8 @@ a .li-status {
     float: left;
     width: 100px;
     margin-left: 1px;
-    border: 1px solid #25688c;
-    background: #25688c;
+    border: 1px solid #666;
+    background: #666;
     -webkit-border-top-left-radius: 5px;
     -webkit-border-top-right-radius: 5px;
 }
@@ -508,7 +514,8 @@ a .li-status {
     text-decoration: none;
 }
 
-.button-bar input.button {
+.button-bar input.button,
+.button-bar button.button {
     width: 100%;
     padding: 0;
     background: transparent;
@@ -659,7 +666,7 @@ a .li-status {
 }
 
 .setting-highlight a {
-    color: #023559;
+    color: #333;
 }
 
 .settings {
@@ -753,4 +760,37 @@ a .li-status {
 
 .hidden {
     display: none;
+}
+
+
+/* iMT Styles ============================================================= */
+
+/* Header ----------------------------------------------------------------- */
+
+#header {
+    border-bottom-color: #25688c;
+    background-color: #589bbf;
+}
+
+#header h1 {
+    text-shadow: #25688c 0px -1px 1px;
+}
+
+
+/* Tabs ------------------------------------------------------------------- */
+
+.tabs {
+    background-color: #023559;
+}
+
+.tabs li {
+    border-color: #25688c;
+    background: #25688c;
+}
+
+
+/* Settings --------------------------------------------------------------- */
+
+.setting-highlight a {
+    color: #023559;
 }
