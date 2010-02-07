@@ -10,7 +10,9 @@ use MT 4;
 use base qw( MT::Plugin );
 
 my $enabled = 0;
-our $VERSION = '1.02';
+my $orig_alt_tmpl_path;
+
+our $VERSION = '1.1';
 my $plugin = __PACKAGE__->new({
     name        => "iPhone / iPod touch UI Support",
     author_name => "<a href='http://www.iwalt.com/'>Walt Dickinson</a>, <a href='http://bradchoate.com/'>Brad Choate</a>",
@@ -37,6 +39,10 @@ my $plugin = __PACKAGE__->new({
     },
 });
 MT->add_plugin($plugin);
+
+sub init {
+    $orig_alt_tmpl_path = MT->config('AltTemplatePath');
+}
 
 sub iphone_list_comment_param {
     return unless $enabled;
@@ -87,10 +93,12 @@ sub init_request {
                 $app->mode('iphone_main')
                     if ($app->mode eq 'default') || ($app->mode eq 'dashboard');
 
-                $app->config('AltTemplatePath', $plugin->path . '/tmpl');
+                $app->config('AltTemplatePath', $plugin->path . "/tmpl");
+                return;
             }
         }
     }
+    $app->config('AltTemplatePath', $orig_alt_tmpl_path);
 }
 
 sub iphone_view {
@@ -110,10 +118,25 @@ sub iphone_main {
     my $param = {};
     $param->{blog_id} = $app->param('blog_id');
     $app->build_blog_selector($param);
-    my $blog_loop = $param->{top_blog_loop} || [];
+    use Data::Dumper;
+    $app->trace(Dumper($param));
+
+    my $mt4 = MT->version_number < 5;
+    my ($loop_name, $name, $id);
+    if ($mt4) {
+        $loop_name = 'top_blog_loop';
+        $name = 'top_blog_name';
+        $id = 'top_blog_id';
+    }
+    else {
+        $loop_name = 'fav_blog_loop';
+        $name = 'fav_blog_name';
+        $id = 'fav_blog_id';
+    }
+    my $blog_loop = $param->{$loop_name} || [];
     foreach (@$blog_loop) {
-        $_->{blog_name} = $_->{top_blog_name};
-        $_->{blog_id} = $_->{top_blog_id};
+        $_->{blog_name} = $_->{$name};
+        $_->{blog_id} = $_->{$id};
     }
     $param->{blogs} = $blog_loop;
     $param->{user_has_weblog} = 1 if @$blog_loop;

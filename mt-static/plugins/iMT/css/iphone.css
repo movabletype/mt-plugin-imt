@@ -395,6 +395,10 @@ a .li-status {
     visibility: hidden;
 }
 
+.menu li {
+   display: block
+}
+
 .menu a {
     overflow: hidden;
     display: block;
