@@ -12,7 +12,7 @@ use base qw( MT::Plugin );
 my $enabled = 0;
 my $orig_alt_tmpl_path;
 
-our $VERSION = '1.1';
+our $VERSION = '1.11';
 my $plugin = __PACKAGE__->new({
     name        => "iPhone / iPod touch UI Support",
     author_name => "<a href='http://www.iwalt.com/'>Walt Dickinson</a>, <a href='http://bradchoate.com/'>Brad Choate</a>",
@@ -80,13 +80,20 @@ sub init_request {
     if ($app->isa('MT::App::CMS')) {
         # A bit of User Agent sniffing to determine if MT should
         # be using our AppleWebKit mobile interface.
-        # Using keyword detection provided by Apple:
+        # Using keyword detection guidance provided by Apple:
         #    http://trac.webkit.org/projects/webkit/wiki/DetectingWebKit
         # Adjusted 'Mobile/' to 'Mobile[ /]' to match for Nexus One which
-        # supplies no device identifier following the 'Mobile' keyword
-        if (my $ua = $ENV{HTTP_USER_AGENT}) {
-            if ((($ua =~ m!AppleWebKit/!) && ($ua =~ m!Mobile[ /]!)) ||
-                 ($ua =~ m!Opera Mini/!)) {
+        #   supplies no device identifier following the 'Mobile' keyword
+        # Disabled iMT by default for iPad; can be overridden using
+        #   'iMTForiPad' config setting.
+        if (my $agent = $ENV{HTTP_USER_AGENT}) {
+            my $is_iphone = ($agent =~ /AppleWebKit/ && ( $agent =~ m!Mobile[ /]! || $agent =~ /Pre/ )) || ($agent =~ m!Opera Mini/!);
+            if ($is_iphone && (! $app->config('iMTForiPad'))) {
+                if ($agent =~ /iPad/) {
+                    $is_iphone = 0;
+                }
+            }
+            if ($is_iphone) {
                 $enabled = 1;
 
                 # Redirect 'dashboard' or 'default' modes to iphone_main

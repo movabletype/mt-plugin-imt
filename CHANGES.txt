@@ -1,3 +1,9 @@
+# Version 1.11 - April 26, 2010
+
+* Recognize user agent for Palm Pre
+* Disable iMT behavior for iPad (can be reversed using a config setting "iMTForiPad 1")
+
+
 # Version 1.1 - March 3, 2010
 
 * Updated for MT 5.
@@ -5,15 +11,17 @@
 * A fix for running in persistent environments.
 * Styling fix for menus affecting iPhone OS 3.0 and later.
 
+
 # Version 1.02 - June 4, 2008
 
 * Fix for MT 4.2
+
 
 # Version 1.01 - September 10, 2008
 
 * Support for Opera Mini.
 
+
 # Version 1.0 - September 10, 2008
 
 * Initial release.
-
