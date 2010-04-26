@@ -2,7 +2,7 @@ use ExtUtils::MakeMaker;
 
 WriteMakefile(
     NAME            => 'iMT',
-    VERSION         => '1.1',
+    VERSION         => '1.11',
     DISTNAME        => 'iMT',
 );
 
