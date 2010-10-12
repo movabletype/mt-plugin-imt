@@ -196,7 +196,7 @@ sub iphone_edit_comment {
 # sub iphone_save_entry {
 #     my $app = shift;
 #     return $app->save_entry(@_) unless $enabled;
-# 
+#
 #     if ($app->param('preview_entry')) {
 #         return $app->preview_entry(@_);
 #     }

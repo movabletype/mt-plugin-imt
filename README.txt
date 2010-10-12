@@ -28,4 +28,3 @@ configuration setting to mt-config.cgi:
 
 This plugin has been released under the terms of the GNU Public License,
 version 2.0.
-
