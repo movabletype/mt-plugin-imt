@@ -3,7 +3,7 @@
 * Author: Six Apart
 * Copyright: 2010 Six Apart Ltd.
 * License: GPL
-* Site: http://www.movabletype.org/
+* Site: <http://www.movabletype.org/>
 
 
 ## Overview
@@ -41,11 +41,11 @@ Should look like this when installed:
     $MT_HOME/
         plugins/
             iMT/
-                (plugin files here)
+                [plugin files here]
         mt-static/
             plugins/
                 iMT/
-                    (plugin static files here)
+                    [plugin static files here]
 
 
 ## Support
