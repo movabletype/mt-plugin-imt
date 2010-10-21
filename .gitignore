@@ -1,0 +1,8 @@
+Makefile
+MANIFEST.SKIP
+blib
+pm_to_blib
+*~
+*.bak
+*.zip
+*.tar.gz
