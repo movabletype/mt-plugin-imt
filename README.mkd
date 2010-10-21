@@ -1,7 +1,7 @@
 # iMT, a plugin for Movable Type
 
 * Author: Six Apart
-* Copyright: 2010 Six Apart
+* Copyright: 2010 Six Apart Ltd.
 * License: GPL
 * Site: http://www.movabletype.org/
 
@@ -50,5 +50,5 @@ Should look like this when installed:
 
 ## Support
 
-This plugin is not an official Six Apart release, and as such support from Six
-Apart for this plugin is not available.
+This plugin is not an official Six Apart release, and as such support for this
+plugin is not available.
